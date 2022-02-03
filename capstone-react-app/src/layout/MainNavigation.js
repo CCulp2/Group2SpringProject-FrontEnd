@@ -3,7 +3,15 @@ import classes from './MainNavigation.module.css';
 function MainNavigation() {
     return (
         <div className={classes.topbar}>
-            Name of Store
+            <nav className={classes.logolink}>
+                <Link to='/'>
+                    Name of Store
+                </Link>
+                <span>----</span>
+                <Link to='/test'>
+                    **getSendTest**
+                </Link>
+            </nav>
         </div>
     )
 }

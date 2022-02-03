@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
 import classes from './MainNavigation.module.css'; 
+
 function genderbar() {
     return (
         <div className={classes.genderbar}>
-            Men | Women
+            <nav className={classes.genderbarnav}>
+                <Link to='/Men'>Men </Link>
+                <a>|</a>
+                <Link to='/Women'> Women</Link>
+            </nav>
         </div>
     )
 }

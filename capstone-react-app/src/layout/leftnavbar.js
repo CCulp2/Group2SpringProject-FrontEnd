@@ -3,8 +3,7 @@ import classes from './MainNavigation.module.css';
 function LeftNavBar() {
     return (
         <div className={classes.leftnavbar}>
-            <nav>
-                <ul>
+            <nav className={classes.leftnavbarnav}>
                     <li>
                         Shirts
                     </li>
@@ -17,7 +16,6 @@ function LeftNavBar() {
                     <li>
                         Outerwear
                     </li>
-                </ul>
             </nav>
         </div>
     )
