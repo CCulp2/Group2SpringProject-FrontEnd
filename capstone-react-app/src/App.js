@@ -10,10 +10,23 @@ import Men from './pages/Men.js';
 import Women from './pages/Women.js';
 import test from './pages/Test.js';
 import Test from './pages/Test.js';
+import { createTheme, ThemeProvider } from '@mui/material';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+       main:  '#C7CFD9'
+    },
+    secondary: {
+      main: '#025E73'
+    }
+  }
+})
 
 function App() {
   return (
     <div className="App">
+      <ThemeProvider theme={theme}>
       {MainNavigation()}
       {genderbar()}
       <Routes>
@@ -22,7 +35,7 @@ function App() {
         <Route path='/Women' element={<Women/>}/>
         <Route path='/test' element={<Test/>}/>
       </Routes>
-
+      </ThemeProvider>
    
     </div>
     
