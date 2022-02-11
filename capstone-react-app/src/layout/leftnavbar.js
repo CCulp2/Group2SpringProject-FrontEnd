@@ -13,13 +13,12 @@ function LeftNavBar() {
             <Tabs
                 orientation="vertical"
                 variant="scrollable"
-                aria-label="Vertical tabs example"
+                aria-label="LeftNavBar"
                 sx={{ borderRight: 1, borderColor: 'divider' }}>
                     <Tab label='Tops'></Tab>
                     <Tab label='Bottoms'></Tab>
                     <Tab label='Accessories'></Tab>
-                    <Tab label='OuterWear'></Tab>
-                    
+                    <Tab label='OuterWear'></Tab>                   
             </Tabs>
         </Box>
         </>
