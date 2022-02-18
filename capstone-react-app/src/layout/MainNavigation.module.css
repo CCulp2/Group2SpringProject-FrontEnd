@@ -1,0 +1,66 @@
+.topbar {
+  background-color: rgb(3, 7, 13);
+  color: rgb(220, 238, 242);
+  position: static;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.genderbar {
+  background-color: rgb(199, 207, 217);
+  color: rgb(2, 94, 115);
+  position: static;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+}
+
+.genderbarnav {
+  color: rgb(2, 94, 115);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: larger;
+  align-items: center;
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.leftnavbar {
+  background-color: rgb(199, 207, 217);
+  color: rgb(2, 94, 115);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  width: 150px;
+  height: 100%;
+  align-items: center;
+}
+
+.leftnavbarnav {
+  color: rgb(2, 94, 115);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  font-weight: bold;
+  justify-content: space-between;
+  line-height: 50px;
+  list-style: none;
+}
+
+.logolink {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: xx-large;
+  font-weight: bold;
+  left: 0%;
+  float: inline-start;
+  margin-left: 20px;
+  text-align: center;
+  margin-top: 25px;
+}
+a:visited {
+  text-decoration: none;
+}
