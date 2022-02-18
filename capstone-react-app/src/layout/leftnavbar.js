@@ -2,10 +2,51 @@ import { Drawer, List, ListItem } from '@mui/material';
 import { Link } from 'react-router-dom';
 import classes from './MainNavigation.module.css'; 
 import { Typography, AppBar, CssBaseline, Grid, Toolbar, Container, Button, Box, IconButton, Tabs, Tab } from '@mui/material';
+import PropTypes from 'prop-types';
+import * as React from 'react';
+import MensTops from '../pages/MensTops';
+import MensPants from '../pages/MensPants';
 
-const drawerWidth = 100;
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={'vertical-tabpanel-${index}'}
+            aria-labelledby={'vertical-tab-${index}'}
+            {...other}
+            >
+                {value === index && (
+                    <Box sx={{ p: 3 }}>
+                        <Typography>{children}</Typography>
+                    </Box>
+                )}
+            </div>
+    );
+}
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+    return {
+        id: 'vertical-tab-${index}',
+        'aria-controls': 'vertical-tabpanel-${index}',
+    };
+}
 
 function LeftNavBar() {
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     return (
         <>
         <CssBaseline />
@@ -13,14 +54,29 @@ function LeftNavBar() {
             <Tabs
                 orientation="vertical"
                 variant="scrollable"
+                value={value}
+                onChange={handleChange}
                 aria-label="LeftNavBar"
                 sx={{ borderRight: 1, borderColor: 'divider' }}>
-                    <Tab label='Tops'></Tab>
-                    <Tab label='Bottoms'></Tab>
-                    <Tab label='Accessories'></Tab>
-                    <Tab label='OuterWear'></Tab>                   
+                    <Tab label='Tops' {...a11yProps(0)} />
+                    <Tab label='Pants' {...a11yProps(1)} />
+                    <Tab label='Shorts' {...a11yProps(2)} />
+                    <Tab label='Sweaters' {...a11yProps(3)} />                   
             </Tabs>
+            <TabPanel value={value} index={0}>
+                {MensTops()}
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+                {MensPants()}
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+                Accessories
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+                Outerwear
+            </TabPanel>
         </Box>
+        
         </>
     )
 }

@@ -16,7 +16,7 @@ function MainNavigation() {
                     <Box sx={{ m: 0}}>
                     <Link to="/">
                         <Button variant='text' color='secondary' size='large' >
-                            Name of Store
+                            PrickleBack
                         </Button>
                     </Link>
                     <Link to="/Test">

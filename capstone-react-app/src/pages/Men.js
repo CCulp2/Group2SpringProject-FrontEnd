@@ -10,14 +10,6 @@ function Men() {
         <>
         <CssBaseline>
         {LeftNavBar()}
-        <Typography>Placeholder for the Menswear Page :]</Typography>
-        <Container>
-            <Grid container>
-                <Grid item>
-                    <Typography>This is a grid item</Typography>
-                </Grid>
-            </Grid>
-        </Container>
         </CssBaseline> 
         </>
     )

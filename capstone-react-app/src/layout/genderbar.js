@@ -7,7 +7,7 @@ function genderbar() {
         <>
         <CssBaseline />
         <Container disableGutters maxWidth="false" >
-            <Grid container spacing={2} alignItems="center" justifyItems="center" justifyContent="center" sx={{ bgcolor: '#DCEEF2', height: '5vh' }}>
+            <Grid container spacing={2} alignItems="center" justifyItems="center" justifyContent="center" sx={{ bgcolor: '#DCEEF2', height: '60px' }}>
                 <Grid item>
                     <Link to="/Men">
                         <Button variant='outlined' color='secondary'>
