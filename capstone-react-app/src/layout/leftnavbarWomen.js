@@ -4,8 +4,10 @@ import classes from './MainNavigation.module.css';
 import { Typography, AppBar, CssBaseline, Grid, Toolbar, Container, Button, Box, IconButton, Tabs, Tab } from '@mui/material';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import MensTops from '../pages/MensTops';
+import WomensTops from '../pages/WomensTops';
 import MensPants from '../pages/MensPants';
+import MensShorts from '../pages/MensShorts';
+import MensSweaters from '../pages/MensSweaters';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -40,7 +42,7 @@ function a11yProps(index) {
     };
 }
 
-function LeftNavBar() {
+function LeftNavBarWomen() {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -64,16 +66,16 @@ function LeftNavBar() {
                     <Tab label='Sweaters' {...a11yProps(3)} />                   
             </Tabs>
             <TabPanel value={value} index={0}>
-                {MensTops()}
+                {WomensTops()}
             </TabPanel>
             <TabPanel value={value} index={1}>
                 {MensPants()}
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Accessories
+                {MensShorts()}
             </TabPanel>
             <TabPanel value={value} index={3}>
-                Outerwear
+                {MensSweaters()}
             </TabPanel>
         </Box>
         
@@ -81,4 +83,4 @@ function LeftNavBar() {
     )
 }
 
-export default LeftNavBar;
+export default LeftNavBarWomen;

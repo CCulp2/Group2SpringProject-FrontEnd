@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom';
 import getSendTest from './Components/getSendTest.js';
 import MainNavigation from './layout/MainNavigation.js';
 import genderbar from './layout/genderbar.js';
-import LeftNavBar from './layout/leftnavbar.js';
 import HomePage from './pages/HomePage.js';
 import Men from './pages/Men.js';
 import Women from './pages/Women.js';

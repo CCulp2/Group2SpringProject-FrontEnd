@@ -1,14 +1,15 @@
-import LeftNavBar from "../layout/leftnavbar";
+import { CssBaseline } from "@mui/material";
+import LeftNavBarWomen from "../layout/leftnavbarWomen";
 
 function Women() {
-    return <div>
-        <div>
-            {LeftNavBar()}
-        </div>
-        <p>
-        Placeholder for womenswear page :]
-        </p>
-        </div>
+    return (
+        <>
+        <CssBaseline>
+            {LeftNavBarWomen()}
+        </CssBaseline>
+        </>
+    )
+        
 }
 
 export default Women;
