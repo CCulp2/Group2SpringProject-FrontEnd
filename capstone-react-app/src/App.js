@@ -28,6 +28,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
       {MainNavigation()}
+      {genderbar()}
       {Register()}
       
       <Routes>

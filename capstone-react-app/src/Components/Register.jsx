@@ -1,5 +1,4 @@
-import { Grid } from "@mui/material";
-import { Box, TextField } from "@mui/material";
+import { Box, TextField, Button, Grid } from "@mui/material";
 import React from "react";
 
 export default function Register() {
@@ -8,21 +7,21 @@ export default function Register() {
       <Grid container spacing={2}>
         <Grid item xs={8}>
           {/* Textfield for Username */}
-          <TextField id="outlined-basic" label="Username" varient="Username" />
+          <TextField id="outlined-basic" label="Username" varient="outlined" />
         </Grid>
         <Grid item xs={2}>
           {/* Checkmark */}
         </Grid>
 
         <Grid item xs={8}>
-          <TextField id="ounlined-basic" label="Password" variant="Password" />
+          <TextField id="ounlined-basic" label="Password" variant="outlined" />
         </Grid>
         <Grid item xs={2}>
           {/* Checkmark */}
         </Grid>
         
         <Grid item xs={8}>
-          <TextField id="ounlined-basic" label="Password" variant="Password" />
+          <TextField id="ounlined-basic" label="Password" variant="outlined" />
         </Grid>
         <Grid item xs={2}>
           {/* Checkmark */}
@@ -36,7 +35,7 @@ export default function Register() {
         </Grid>
         
         <Grid item xs={12}>
-          {/*Send Button*/}
+          <Button variant="contained">Submit</Button>
         </Grid>
       </Grid>
     </Box>
