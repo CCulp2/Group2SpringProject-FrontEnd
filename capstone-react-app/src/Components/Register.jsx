@@ -1,37 +1,44 @@
-import Grid from '@mui/material'
-import Item from '@mui/material'
-import React from 'react'
+import { Grid } from "@mui/material";
+import { Box, TextField } from "@mui/material";
+import React from "react";
 
 export default function Register() {
   return (
-    <Grid container spacing="2">
-      <Grid item xs={8}>
-        <Item>{/*Username Form*/}</Item>
+    <Box sx={{ flexgrow: 1 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={8}>
+          {/* Textfield for Username */}
+          <TextField id="outlined-basic" label="Username" varient="Username" />
+        </Grid>
+        <Grid item xs={2}>
+          {/* Checkmark */}
+        </Grid>
+
+        <Grid item xs={8}>
+          <TextField id="ounlined-basic" label="Password" variant="Password" />
+        </Grid>
+        <Grid item xs={2}>
+          {/* Checkmark */}
+        </Grid>
+        
+        <Grid item xs={8}>
+          <TextField id="ounlined-basic" label="Password" variant="Password" />
+        </Grid>
+        <Grid item xs={2}>
+          {/* Checkmark */}
+        </Grid>
+        
+        <Grid item xs={8}>
+          {/*Address Form*/}
+        </Grid>
+        <Grid item xs={2}>
+          {/* Checkmark */}
+        </Grid>
+        
+        <Grid item xs={12}>
+          {/*Send Button*/}
+        </Grid>
       </Grid>
-      <Grid item xs={2}>
-        <Item>{/* Checkmark */}</Item>
-      </Grid>
-      <Grid item xs={8}>
-        <Item>{/*Password Form*/}</Item>
-      </Grid>
-      <Grid item xs={2}>
-        <Item>{/* Checkmark */}</Item>
-      </Grid>
-      <Grid item xs={8}>
-        <Item>{/*Password Recheck*/}</Item>
-      </Grid>
-      <Grid item xs={2}>
-        <Item>{/* Checkmark */}</Item>
-      </Grid>
-      <Grid item xs={8}>
-        <Item>{/*Address Form*/}</Item>
-      </Grid>
-      <Grid item xs={2}>
-        <Item>{/* Checkmark */}</Item>
-      </Grid>
-      <Grid item xs={12}>
-        <Item>{/*Send Button*/}</Item>
-      </Grid>
-    </Grid>
-  )
+    </Box>
+  );
 }
