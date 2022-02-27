@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Box } from "@mui/material";
 
 export default function Login() {
   const formik = useFormik({
@@ -14,6 +14,7 @@ export default function Login() {
   });
   return (
     <div className="loginForm">
+        <Box height={12} />
       <TextField
         fullWidth
         id="userName"
@@ -22,6 +23,7 @@ export default function Login() {
         value={formik.values.userName}
         onChange={formik.handleChange}
       />
+      <Box height={12} />
       <TextField
         fullWidth
         id="password"
