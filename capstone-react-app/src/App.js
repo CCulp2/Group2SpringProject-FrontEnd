@@ -27,8 +27,8 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-      {MainNavigation()}
-      {genderbar()}
+      {/* {MainNavigation()} */}
+      {/* {genderbar()} */}
       {Register()}
       
       <Routes>
