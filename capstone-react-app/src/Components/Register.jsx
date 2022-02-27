@@ -28,7 +28,7 @@ export default function Register() {
         </Grid>
         
         <Grid item xs={8}>
-          {/*Address Form*/}
+          <TextField id="outlined-basic" label="Address" varient="outlined" />
         </Grid>
         <Grid item xs={2}>
           {/* Checkmark */}
