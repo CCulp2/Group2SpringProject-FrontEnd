@@ -6,18 +6,18 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
-import {womensTops} from '../data'
+import {womensSweaters} from '../data'
 
 
 
 
-function WomensTops() {
+function WomensSweaters() {
 
     return  (
         <>
         <CssBaseline>
         <Grid container spacing={3} >
-                {womensTops.map(item => (
+                {womensSweaters.map(item => (
             <Grid item xs={4}>
                 <Card sx={{ maxWidth: 500}}>
                     <CardActionArea>
@@ -41,4 +41,4 @@ function WomensTops() {
     )
 }
 
-export default WomensTops;
+export default WomensSweaters;

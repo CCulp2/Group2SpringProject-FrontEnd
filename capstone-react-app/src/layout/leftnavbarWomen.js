@@ -5,9 +5,9 @@ import { Typography, AppBar, CssBaseline, Grid, Toolbar, Container, Button, Box,
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import WomensTops from '../pages/WomensTops';
-import MensPants from '../pages/MensPants';
-import MensShorts from '../pages/MensShorts';
-import MensSweaters from '../pages/MensSweaters';
+import WomensPants from '../pages/WomensPants';
+import WomensShorts from '../pages/WomensShorts';
+import WomensSweaters from '../pages/WomensSweaters';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -69,13 +69,13 @@ function LeftNavBarWomen() {
                 {WomensTops()}
             </TabPanel>
             <TabPanel value={value} index={1}>
-                {MensPants()}
+                {WomensPants()}
             </TabPanel>
             <TabPanel value={value} index={2}>
-                {MensShorts()}
+                {WomensShorts()}
             </TabPanel>
             <TabPanel value={value} index={3}>
-                {MensSweaters()}
+                {WomensSweaters()}
             </TabPanel>
         </Box>
         
