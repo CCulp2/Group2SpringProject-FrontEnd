@@ -20,16 +20,19 @@ function MainNavigation() {
             <AppBar position='relative' >
                 <Toolbar>
                     <Box sx={{ m: 0}}>
-                    <Link to="/">
-                        <Button variant='text' color='secondary' size='large' >
+                    
+                        <Button variant='text' color='secondary' size='large' onClick={() => {
+                            handleNavClick('/')
+                        }}>
                             PrickleBack
                         </Button>
-                    </Link>
-                    <Link to="/Test">
-                        <Button variant='contained' color='secondary' size='small' to='/Test'>
+
+                    
+                        <Button variant='contained' color='secondary' size='small' onClick={() => {
+                            handleNavClick('/test')
+                        }}>
                             getSendTest
                         </Button>
-                    </Link>
                     </Box>   
                     <Box sx={{ ml: "auto"}}> 
                     <IconButton aria-label='Profile' color='secondary' onClick={() => {
