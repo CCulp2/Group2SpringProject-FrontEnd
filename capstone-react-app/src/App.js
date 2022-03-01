@@ -11,6 +11,7 @@ import test from './pages/Test.js';
 import Test from './pages/Test.js';
 import { createTheme, ThemeProvider } from '@mui/material';
 import Register from './Components/Register/Register.jsx';
+import Login from './Components/Login/Login.jsx';
 
 const theme = createTheme({
   palette: {
@@ -29,13 +30,15 @@ function App() {
       <ThemeProvider theme={theme}>
       {MainNavigation()}
       {/* {genderbar()} */}
-      {Register()}
+      {Login}
       
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/Men' element={<Men/>}/>
         <Route path='/Women' element={<Women/>}/>
         <Route path='/test' element={<Test/>}/>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/Login' element={<Login/>}/>
       </Routes>
       </ThemeProvider>
    

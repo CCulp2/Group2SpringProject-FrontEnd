@@ -29,11 +29,7 @@ const Register = () => {
   return (
     <Box className="registerForm" py={4} px={50}>
       <Paper elevation={10}>
-        <Grid 
-        container 
-        spacing={2}
-        py={4}
-        >
+        <Grid container spacing={2} py={4}>
           <Grid container item xs={12} justifyContent='center' justify>
             <Typography variant='h3'>
               Sign-Up
@@ -83,7 +79,7 @@ const Register = () => {
           </Grid>
 
           <Grid container item xs={12} justifyContent='center'>
-            <Button variant="contained">Submit</Button>
+            <Button variant="contained" type="submit">Submit</Button>
             </Grid>
         </Grid>
       </Paper>
