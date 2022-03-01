@@ -2,12 +2,15 @@ import { Link } from 'react-router-dom';
 import classes from './MainNavigation.module.css'; 
 import { Typography, AppBar, CssBaseline, Grid, Toolbar, Container, Button, Box, IconButton, makeStyles, rgbToHex, } from '@mui/material';
 import { AccountCircle, ShoppingCartRounded } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function MainNavigation() {
+    const navigate = useNavigate();
+
     const handleNavClick = (destination) => {
-        alert(destination);
+        navigate(destination);
     }
 
     return (
