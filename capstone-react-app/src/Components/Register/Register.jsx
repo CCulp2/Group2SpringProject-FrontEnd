@@ -27,12 +27,12 @@ const Register = () => {
   });
 
   return (
-    <Box className="registerForm" p={24}>
+    <Box className="registerForm" py={4} px={50}>
       <Paper elevation={10}>
         <Grid 
         container 
         spacing={2}
-        p={2}
+        py={4}
         >
           <Grid container item xs={12} justifyContent='center' justify>
             <Typography variant='h3'>
