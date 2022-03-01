@@ -29,8 +29,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
       {MainNavigation()}
-      {/* {genderbar()} */}
-      {Login}
+      {genderbar()}
       
       <Routes>
         <Route path='/' element={<HomePage/>}/>

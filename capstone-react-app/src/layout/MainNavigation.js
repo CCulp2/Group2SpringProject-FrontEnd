@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import classes from './MainNavigation.module.css'; 
 import { Typography, AppBar, CssBaseline, Grid, Toolbar, Container, Button, Box, IconButton, makeStyles, rgbToHex, } from '@mui/material';
-import { ShoppingCartRounded } from '@mui/icons-material';
+import { AccountCircle, ShoppingCartRounded } from '@mui/icons-material';
 
 
 
 function MainNavigation() {
+    const handleNavClick = (destination) => {
+        alert(destination);
+    }
 
     return (
         <>
@@ -26,6 +29,11 @@ function MainNavigation() {
                     </Link>
                     </Box>   
                     <Box sx={{ ml: "auto"}}> 
+                    <IconButton aria-label='Profile' color='secondary' onClick={() => {
+                            handleNavClick('/login');
+                        }}>
+                        <AccountCircle />
+                    </IconButton>
                     <IconButton aria-label='ShoppingCartIcon' color='secondary'   >
                         <ShoppingCartRounded />
                     </IconButton>
