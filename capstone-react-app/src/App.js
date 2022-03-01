@@ -10,7 +10,7 @@ import Women from './pages/Women.js';
 import test from './pages/Test.js';
 import Test from './pages/Test.js';
 import { createTheme, ThemeProvider } from '@mui/material';
-import Register from './Components/Register.jsx';
+import Register from './Components/Register/Register.jsx';
 
 const theme = createTheme({
   palette: {
@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-      {/* {MainNavigation()} */}
+      {MainNavigation()}
       {/* {genderbar()} */}
       {Register()}
       
