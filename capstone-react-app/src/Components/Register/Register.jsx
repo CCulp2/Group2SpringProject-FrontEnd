@@ -9,23 +9,38 @@ const validationSchema = Yup.object({
     .email("Invalid Email Format")
     .required("A valid email is required"),
   password: Yup.string().required("Password is Required"),
-  address: Yup.string().required("Please enter a valid address"),
+  streetAddress: Yup.string().required("Please enter a valid address"),
 });
 
 const initialValues = {
   username: "",
+  firstName: "",
+  lastName: "",
   email: "",
   password: "",
-  address: "",
+  streetAddress: "",
 };
+
+function sendRegistration(values) {
+  fetch('http://localhost:8080/api/v1/customer',
+  {
+      method: 'post',
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify({
+        username: values.username,
+        password: values.password,
+        streetAddress: values.streetAddress,
+
+      })
+  })
+}
 
 export default function Register() {
   const formik = useFormik({
     initialValues,
     validationSchema: validationSchema,
     // Switch onSubmit for backend when time.
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (values) => {sendRegistration(values);
     }
   });
 
@@ -51,20 +66,6 @@ export default function Register() {
                 helperText={formik.touched.username && formik.errors.username}
               />
             </Grid>
-            <Grid container item xs={12} justifyContent="center">
-              <TextField
-                id="email"
-                name="email"
-                label="Email"
-                type="email"
-                variant="outlined"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.email}
-                error={formik.touched.email && Boolean(formik.errors.email)}
-                helperText={formik.touched.email && formik.errors.email}
-              />
-            </Grid>
 
             <Grid container item xs={12} justifyContent="center">
               <TextField
@@ -85,16 +86,61 @@ export default function Register() {
 
             <Grid container item xs={12} justifyContent="center">
               <TextField
-                id="address"
-                label="Address"
-                name="address"
-                type="address"
+                id="firstName"
+                name="firstName"
+                label="First Name"
+                type="firstName"
                 varient="outlined"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
-                value={formik.values.address}
-                error={formik.touched.address && Boolean(formik.errors.address)}
-                helperText={formik.touched.address && formik.errors.address}
+                value={formik.values.firstName}
+                error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                helperText={formik.touched.firstName && formik.errors.firstName}
+              />
+            </Grid>
+            
+            <Grid container item xs={12} justifyContent="center">
+              <TextField
+                id="lastName"
+                name="lastname"
+                label="Last Name"
+                type="lastName"
+                varient="outlined"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.lastName}
+                error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                helperText={formik.touched.lastName && formik.errors.lastName}
+              />
+            </Grid>
+            
+            <Grid container item xs={12} justifyContent="center">
+              <TextField
+                id="email"
+                name="email"
+                label="Email"
+                type="email"
+                variant="outlined"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+              />
+            </Grid>            
+
+            <Grid container item xs={12} justifyContent="center">
+              <TextField
+                id="streetAddress"
+                label="streetAddress"
+                name="streetAddress"
+                type="streetAddress"
+                varient="outlined"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.streetAddress}
+                error={formik.touched.streetAddress && Boolean(formik.errors.streetAddress)}
+                helperText={formik.touched.streetAddress && formik.errors.streetAddress}
               />
             </Grid>
 
