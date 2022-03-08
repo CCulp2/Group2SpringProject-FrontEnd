@@ -18,15 +18,15 @@ import { stateAbbrev } from "./stateabbreviation";
 const validationSchema = Yup.object({
   username: Yup.string().required("A Username is required"),
   password: Yup.string().required("Password is Required"),
-  firstName: Yup.string()
+  first_name: Yup.string()
     .required("Please enter a first name")
     .min(3, "Name must be at least 3 characters")
     .matches(/[A-Za-z]/, "Name can only contain letters."),
-  lastName: Yup.string()
+  last_name: Yup.string()
     .required("Please enter a last name")
     .min(3, "Name must be at least 3 characters")
     .matches(/[A-Za-z]/, "Name can only contain letters."),
-  streetAddress: Yup.string()
+  address: Yup.string()
     .required("Please enter a valid address")
     .min(5, "Please enter a valid address"),
   city: Yup.string()
@@ -38,9 +38,9 @@ const validationSchema = Yup.object({
 const initialValues = {
   username: "",
   password: "",
-  firstName: "",
-  lastName: "",
-  streetAddress: "",
+  first_name: "",
+  last_name: "",
+  address: "",
   city: "",
   state: "",
 };
@@ -52,9 +52,9 @@ function sendRegistration(values) {
     body: JSON.stringify({
       username: values.username,
       password: values.password,
-      firstName: values.firstName,
-      lastName: values.lastName,
-      streetAddress: values.streetAddress,
+      first_name: values.first_name,
+      last_name: values.last_name,
+      address: values.address,
       city: values.city,
       state: values.state,
     }),
@@ -72,8 +72,7 @@ export default function Register() {
   });
 
   return (
-    console.log(stateAbbrev),
-    <FormGroup onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit}>
       <Box className="registerForm" py={4} px={50}>
         <Paper elevation={10}>
           <Grid container spacing={2} py={4}>
@@ -129,19 +128,19 @@ export default function Register() {
               {/* First name */}
               <Grid item>
                 <TextField
-                  id="firstName"
-                  name="firstName"
+                  id="first_name"
+                  name="first_name"
                   label="First Name"
-                  type="firstName"
+                  type="first_name"
                   varient="outlined"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
-                  value={formik.values.firstName}
+                  value={formik.values.first_name}
                   error={
-                    formik.touched.firstName && Boolean(formik.errors.firstName)
+                    formik.touched.first_name && Boolean(formik.errors.first_name)
                   }
                   helperText={
-                    formik.touched.firstName && formik.errors.firstName
+                    formik.touched.first_name && formik.errors.first_name
                   }
                 />
               </Grid>
@@ -149,18 +148,18 @@ export default function Register() {
               {/* last name */}
               <Grid item>
                 <TextField
-                  id="lastName"
-                  name="lastName"
+                  id="last_name"
+                  name="last_name"
                   label="Last Name"
-                  type="lastName"
+                  type="last_name"
                   varient="outlined"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
-                  value={formik.values.lastName}
+                  value={formik.values.last_name}
                   error={
-                    formik.touched.lastName && Boolean(formik.errors.lastName)
+                    formik.touched.last_name && Boolean(formik.errors.last_name)
                   }
-                  helperText={formik.touched.lastName && formik.errors.lastName}
+                  helperText={formik.touched.last_name && formik.errors.last_name}
                 />
               </Grid>
             </Grid>
@@ -170,20 +169,20 @@ export default function Register() {
               {/* Street Address */}
               <Grid item>
                 <TextField
-                  id="streetAddress"
+                  id="address"
                   label="Street Address"
-                  name="streetAddress"
-                  type="streetAddress"
+                  name="address"
+                  type="address"
                   varient="outlined"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
-                  value={formik.values.streetAddress}
+                  value={formik.values.address}
                   error={
-                    formik.touched.streetAddress &&
-                    Boolean(formik.errors.streetAddress)
+                    formik.touched.address &&
+                    Boolean(formik.errors.address)
                   }
                   helperText={
-                    formik.touched.streetAddress && formik.errors.streetAddress
+                    formik.touched.address && formik.errors.address
                   }
                 />
               </Grid>
@@ -209,7 +208,7 @@ export default function Register() {
             <Grid container item xs={12} justifyContent="center">
               <TextField
                 sx={{minWidth: 120}}
-                MenuProps={{ PaperProps: { sx: { maxHeight: 50 } } }}
+
                 select
                 id="state"
                 label="State"
@@ -242,6 +241,6 @@ export default function Register() {
           </Grid>
         </Paper>
       </Box>
-    </FormGroup>
+    </form>
   );
 }
