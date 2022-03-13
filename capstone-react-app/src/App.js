@@ -10,7 +10,7 @@ import Test from './pages/Test.js';
 import { createTheme, ThemeProvider } from '@mui/material';
 import Register from './Components/Register/Register.jsx';
 import Login from './Components/Login/Login.jsx';
-import Item from './pages/Item.js';
+import Item from './pages/Item.jsx';
 
 const theme = createTheme({
   palette: {
