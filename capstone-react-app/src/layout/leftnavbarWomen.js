@@ -1,7 +1,4 @@
-import { Drawer, List, ListItem } from '@mui/material';
-import { Link } from 'react-router-dom';
-import classes from './MainNavigation.module.css'; 
-import { Typography, AppBar, CssBaseline, Grid, Toolbar, Container, Button, Box, IconButton, Tabs, Tab } from '@mui/material';
+import { Typography, CssBaseline,  Box,  Tabs, Tab } from '@mui/material';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import WomensTops from '../pages/WomensTops';
@@ -16,7 +13,9 @@ function TabPanel(props) {
         <div
             role="tabpanel"
             hidden={value !== index}
+      // eslint-disable-next-line
             id={'vertical-tabpanel-${index}'}
+      // eslint-disable-next-line
             aria-labelledby={'vertical-tab-${index}'}
             {...other}
             >
@@ -37,7 +36,9 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
     return {
+      // eslint-disable-next-line
         id: 'vertical-tab-${index}',
+      // eslint-disable-next-line
         'aria-controls': 'vertical-tabpanel-${index}',
     };
 }

@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import classes from './MainNavigation.module.css'; 
-import { Typography, AppBar, CssBaseline, Grid, Toolbar, Container, Button, Box, IconButton, Divider, } from '@mui/material';
+import {   CssBaseline, Grid, Container, Button,  } from '@mui/material';
 
 function genderbar() {
     return (
