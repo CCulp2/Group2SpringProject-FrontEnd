@@ -37,7 +37,7 @@ function Item() {
 const [items, setItems] = React.useState(0)
 
 React.useEffect(() => {
-  getAllItems().then(data => setItems(data));
+  getAllItems().then(data => setItems(data)).then(console.log(items));
 }, []);
 
 
