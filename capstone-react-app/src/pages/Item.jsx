@@ -13,6 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
+import { getAllItems } from '../Components/Items/ItemsService'
 
 
 function Item() {
@@ -31,6 +32,13 @@ function Item() {
     setQuantity(event.target.value);
   };
 // }---------------------------------------------------
+
+// fetch for items on the items page
+const [items, setItems] = React.useState(0)
+
+React.useEffect(() => {
+  getAllItems().then(data => setItems(data));
+}, []);
 
 
   return (
