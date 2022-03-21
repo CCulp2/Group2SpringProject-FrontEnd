@@ -1,7 +1,9 @@
-const PRODUCT_API_URL = "http://127.0.0.1:8080/api/v1/product/";
+import { API_URL_BASE } from "../APIUrlBase";
+
+const PRODUCT_API = API_URL_BASE + "/product/";
 
 export async function getAllItems() {
-  return fetch(PRODUCT_API_URL)
+  return fetch(PRODUCT_API)
     .then((res) => {
       return res.json();
     })
@@ -11,7 +13,7 @@ export async function getAllItems() {
 }
 
 export async function getItem(id) {
-  return fetch(PRODUCT_API_URL + id)
+  return fetch(PRODUCT_API + id)
   .then((res => {
       return res.json();
   }))
@@ -21,7 +23,7 @@ export async function getItem(id) {
 }
 
 export async function addItem(item) {
-    return fetch(PRODUCT_API_URL, {
+    return fetch(PRODUCT_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

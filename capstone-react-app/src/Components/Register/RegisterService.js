@@ -1,6 +1,9 @@
+import { API_URL_BASE } from "../APIUrlBase";
+
+const CUSTOMER_API = API_URL_BASE + '/customer/'
 
 export async function addCustomer(values) {
-    return fetch("http://localhost:8080/api/v1/customer", {
+    return fetch(CUSTOMER_API, {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
