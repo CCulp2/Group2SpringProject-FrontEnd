@@ -1,5 +1,4 @@
 import './Components/getSendTest.js'
-import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import MainNavigation from './layout/MainNavigation.js';
 import genderbar from './layout/genderbar.js';

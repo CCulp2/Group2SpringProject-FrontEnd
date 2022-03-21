@@ -13,27 +13,48 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
+import { getAllItems } from '../Components/Items/ItemsService'
+
 
 function Item() {
+  // Handles Product @Size ---------{
   const [size, setSize] = React.useState("medium");
 
-  const handleSize = (even, newSize) => {
+  const handleSize = (event, newSize) => {
     setSize(newSize);
   };
+// }--------------------------------------------------
 
+  // Handles Product @Quantity ---------{
   const [quantity, setQuantity] = React.useState("1");
 
   const handleQuantity = (event) => {
     setQuantity(event.target.value);
   };
+// }---------------------------------------------------
+
+// fetch for items on the items page
+const [items, setItems] = React.useState(0)
+
+React.useEffect(() => {
+  getAllItems().then(data => setItems(data)).then(console.log(items));
+}, []);
+
 
   return (
     <>
       <CssBaseline>
-        <Container maxWidth="lg" sx={{ pt: "20px" }}>
+        <Container maxWidth="lg" sx={{ pt: "40px" }}>
           <Paper elevation={3} maxWidth="500px">
             <Grid container spacing={2}>
-              <Grid item md={6}>
+
+              {/* This is the left side of the Paper */}
+              {/* This contains on the Product @Photo */}
+
+              <Grid item md={6}
+                    sx={{
+                  mb: '20px', 
+                }}>
                 <Card>
                   <CardMedia
                     component="img"
@@ -45,15 +66,19 @@ function Item() {
               <Grid item md={6} justifyContent="center">
                 <Grid
                   container
-                  spacing={2}
+                  spacing={6}
                   direction="row"
                   justifyContent="center"
-                >
+                  >
+                  
+                  {/* Product @Name */}
                   <Grid item sm={12}>
                     <Typography variant="h2">
                       Essential Crewneck Black
                     </Typography>
                   </Grid>
+
+                    {/* Product @Size S M L XL */}
                   <Grid item sm={12} justifyContent="center">
                     <ToggleButtonGroup
                       color="secondary"
@@ -64,8 +89,12 @@ function Item() {
                       <ToggleButton value="small">S</ToggleButton>
                       <ToggleButton value="medium">M</ToggleButton>
                       <ToggleButton value="large">L</ToggleButton>
+                      <ToggleButton value="x-large">XL</ToggleButton>
                     </ToggleButtonGroup>
                   </Grid>
+
+                    {/* Product @Quantity */}
+                    {/* Only goes from 1-3 */}
                   <Grid item sm={12}>
                     <Select
                       labelId="item-quantity-select-label"
@@ -79,6 +108,17 @@ function Item() {
                       <MenuItem value={3}>3</MenuItem>
                     </Select>
                   </Grid>
+
+                    {/* Product @Price */}
+                  <Grid item
+                        xs={12}
+                        justifyContent="center">
+                  <Typography variant="h4">
+                    $29.99
+                  </Typography>
+                  </Grid>
+
+                    {/* @Add to Cart Button */}
                   <Grid
                     item
                     xs={12}
@@ -90,12 +130,15 @@ function Item() {
                       Add to Cart
                     </Button>
                   </Grid>
+
+                    {/* Product @Description */}
                   <Grid item sm={12}>
                     <Typography>
                       Our essential crewneck t-shirt, in a color that goes with
                       everything. Wear it everyday, with everything.
                     </Typography>
                   </Grid>
+
                 </Grid>
               </Grid>
             </Grid>

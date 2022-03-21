@@ -1,5 +1,4 @@
 import { Card, CardMedia, Container, CssBaseline, Grid, CardActions, Button } from "@mui/material";
-import { maxWidth } from "@mui/system";
 
 function HomePage() {
     return ( 
