@@ -2,6 +2,7 @@ import { TextField, Button, Box, Grid, Paper, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import React from "react";
+import { addCustomer } from "./RegisterService";
 
 const validationSchema = Yup.object({
   username: Yup.string().required("A Username is required"),
@@ -25,7 +26,7 @@ export default function Register() {
     validationSchema: validationSchema,
     // Switch onSubmit for backend when time.
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      addCustomer(values);
     }
   });
 
