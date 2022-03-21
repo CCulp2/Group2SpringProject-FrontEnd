@@ -6,8 +6,8 @@ export async function addCustomer(values) {
     body: JSON.stringify({
       username: values.username,
       password: values.password,
-      first_name: values.first_name,
-      last_name: values.last_name,
+      firstName: values.first_name,
+      lastName: values.last_name,
       address: values.address,
       city: values.city,
       state: values.state,

@@ -46,29 +46,12 @@ const initialValues = {
   state: "",
 };
 
-function sendRegistration(values) {
-  fetch("http://localhost:8080/api/v1/customer", {
-    method: "post",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username: values.username,
-      password: values.password,
-      first_name: values.first_name,
-      last_name: values.last_name,
-      address: values.address,
-      city: values.city,
-      state: values.state,
-    }),
-  });
-}
-
 export default function Register() {
   const formik = useFormik({
     initialValues,
     validationSchema: validationSchema,
-    // Switch onSubmit for backend when time.
     onSubmit: (values) => {
-      addCustomer(values);
+      console.log(addCustomer(values));
     }
   });
 
