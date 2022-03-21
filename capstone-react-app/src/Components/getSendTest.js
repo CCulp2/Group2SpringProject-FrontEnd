@@ -11,7 +11,7 @@ function postTest(){
         body: JSON.stringify({name: nameBoxVal})
         }).then(() => {
             console.log('new Customer added')
-        })
+        }) 
 }
 //simple get reqeust
 function getTest(){
