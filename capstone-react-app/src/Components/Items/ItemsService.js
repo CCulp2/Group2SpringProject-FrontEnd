@@ -21,10 +21,19 @@ export async function getItem(id) {
 }
 
 export async function addItem(item) {
-    fetch(PRODUCT_API_URL, {
+    return fetch(PRODUCT_API_URL, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            product_name: item.itemName,
+            product_type: item.type,
+            quantity_in_stock: item.quantityInStock,
+            unit_price: item.price,
+            gender: item.gender,
+            productSize: item.size,
+            product_img_url: item.imageUrl
+        })
+    }).then((res) => {
+        return res.json();
+    });
 }
