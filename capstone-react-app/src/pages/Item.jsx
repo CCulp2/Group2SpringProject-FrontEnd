@@ -59,7 +59,7 @@ React.useEffect(() => {
                   <CardMedia
                     component="img"
                     height="700"
-                    image="https://images.unsplash.com/photo-1620456456327-264dbf934b06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODJ8fGJsYWNrJTIwdCUyMHNoaXJ0JTIwbWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60"
+                    image={item.product_img_url}
                   />
                 </Card>
               </Grid>
@@ -74,7 +74,7 @@ React.useEffect(() => {
                   {/* Product @Name */}
                   <Grid item sm={12}>
                     <Typography variant="h2">
-                      Essential Crewneck Black
+                {item.product_name}
                     </Typography>
                   </Grid>
 
@@ -114,7 +114,7 @@ React.useEffect(() => {
                         xs={12}
                         justifyContent="center">
                   <Typography variant="h4">
-                    $29.99
+                    {item.unit_price}
                   </Typography>
                   </Grid>
 
@@ -134,8 +134,8 @@ React.useEffect(() => {
                     {/* Product @Description */}
                   <Grid item sm={12}>
                     <Typography>
-                      Our essential crewneck t-shirt, in a color that goes with
-                      everything. Wear it everyday, with everything.
+                      {/* FIXME: No product description coming from database/backend */}
+                      {item.product_description}
                     </Typography>
                   </Grid>
 
