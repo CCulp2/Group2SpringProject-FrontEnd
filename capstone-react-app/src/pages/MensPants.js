@@ -9,6 +9,14 @@ import {mensPants} from '../data'
 
 function MensPants() {
 
+
+    const [items, setItems] = React.useState(0) 
+
+    React.useEffect(() => {
+        getItemsByType("MENS", "PANTS").then((data) => setItems(data));
+    })
+
+
     return  (
         <>
         <CssBaseline>
@@ -20,11 +28,11 @@ function MensPants() {
                         <CardMedia
                         component="img"
                         height="300"
-                        image={item.img}
+                        image={item.product_img_url}
                         />
                         <CardContent>
                             <Typography variant="h5" component="div">
-                                {item.title}
+                                {item.product_name}
                             </Typography>
                         </CardContent>
                     </CardActionArea>
