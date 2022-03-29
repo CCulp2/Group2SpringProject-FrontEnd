@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import {womensTops} from '../data'
+import {getItemsByGenderAndType} from '../Components/Items/ItemsService'
 
 
 
@@ -14,7 +15,7 @@ function WomensTops() {
     const [items, setItems] = React.useState(0) 
 
     React.useEffect(() => {
-        getItemsByType("WOMENS", "TOPS").then((data) => setItems(data));
+        getItemsByGenderAndType("WOMENS", "TOPS").then((data) => setItems(data));
     })
 
 

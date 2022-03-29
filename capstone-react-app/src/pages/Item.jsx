@@ -59,7 +59,7 @@ React.useEffect(() => {
                   <CardMedia
                     component="img"
                     height="700"
-                    image={item.product_img_url}
+                    image={items.product_img_url}
                   />
                 </Card>
               </Grid>
@@ -74,7 +74,7 @@ React.useEffect(() => {
                   {/* Product @Name */}
                   <Grid item sm={12}>
                     <Typography variant="h2">
-                {item.product_name}
+                {items.product_name}
                     </Typography>
                   </Grid>
 
@@ -114,7 +114,7 @@ React.useEffect(() => {
                         xs={12}
                         justifyContent="center">
                   <Typography variant="h4">
-                    {item.unit_price}
+                    {items.unit_price}
                   </Typography>
                   </Grid>
 
@@ -135,7 +135,7 @@ React.useEffect(() => {
                   <Grid item sm={12}>
                     <Typography>
                       {/* FIXME: No product description coming from database/backend */}
-                      {item.product_description}
+                      {items.product_description}
                     </Typography>
                   </Grid>
 
