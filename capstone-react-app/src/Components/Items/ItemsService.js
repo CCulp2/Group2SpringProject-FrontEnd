@@ -10,10 +10,10 @@ export async function getAllItems() {
 
 export async function getItem(id) {
   return fetch(PRODUCT_API_URL + id)
-  .then((res => {
+  .then(res => {
       return res.json();
-  }))
-  .then((data) => {
+  })
+  .then(data => {
       return data;
   });
 }
@@ -39,12 +39,12 @@ export async function addItem(item) {
 export async function getItemsByGenderAndType(gender, type) {
     
   return fetch(PRODUCT_API_URL + "/search?gender="+ gender + "&type=" + type)
-  .then((res => {
+  .then(res => {
     console.log(res);
       return res.json();
       
-  }))
-  .then((data) => {
+  })
+  .then(data => {
       console.log(data);
       return data;
   })

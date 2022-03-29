@@ -16,7 +16,7 @@ function MensSweaters() {
 
     React.useEffect(() => {
         getItemsByGenderAndType("MENS", "SWEATERS").then((data) => setItems(data));
-    })
+    },[])
 
 
     return  (

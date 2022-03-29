@@ -8,11 +8,13 @@ import { getItemsByGenderAndType } from "../Components/Items/ItemsService";
 
 
 function MensTops() {
-    const [items, setItems] = React.useState() 
+    const [items, setItems] = React.useState([]); 
 
     React.useEffect(() => {
-        getItemsByGenderAndType("MENS", "TOPS").then((data) => setItems(data));
-    });
+        getItemsByGenderAndType("MENS", "TOPS").then((data) => {
+            return setItems(data);
+        });
+    },[]);
 
     return  (
         <>
