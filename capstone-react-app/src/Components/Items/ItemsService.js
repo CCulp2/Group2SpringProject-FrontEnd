@@ -24,12 +24,13 @@ export async function addItem(item) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             product_name: item.itemName,
-            product_type: item.type,
             quantity_in_stock: item.quantityInStock,
             unit_price: item.price,
-            gender: item.gender,
             productSize: item.size,
-            product_img_url: item.imageUrl
+            gender: item.gender,
+            product_img_url: item.imageUrl,
+            description: item.description,
+            product_type: item.type,
         })
     }).then((res) => {
         return res.json();
