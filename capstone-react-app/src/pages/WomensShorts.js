@@ -10,20 +10,19 @@ import {getItemsByGenderAndType} from '../Components/Items/ItemsService'
 
 
 function WomensShorts() {
-
-
-    const [items, setItems] = React.useState(0) 
+    const [items, setItems] = React.useState([]); 
 
     React.useEffect(() => {
-        getItemsByGenderAndType("FEMALE", "SHORTS").then((data) => setItems(data));
-    },[])
-
+        getItemsByGenderAndType("FEMALE", "SHORTS").then((data) => {
+            return setItems(data);
+        });
+    },[]);
 
     return  (
         <>
         <CssBaseline>
         <Grid container spacing={3} >
-                {womensShorts.map(item => (
+                {items.map(item => (
             <Grid item xs={4}>
                 <Card sx={{ maxWidth: 500}}>
                     <CardActionArea>

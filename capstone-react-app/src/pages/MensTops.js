@@ -27,11 +27,11 @@ function MensTops() {
                         <CardMedia
                         component="img"
                         height="300"
-                        image={item.img}
+                        image={item.product_img_url}
                         />
                         <CardContent>
                             <Typography variant="h5" component="div">
-                                {item.title}
+                                {item.product_name}
                             </Typography>
                         </CardContent>
                     </CardActionArea>
