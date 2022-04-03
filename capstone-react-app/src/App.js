@@ -10,6 +10,7 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import Register from './Components/Register/Register.jsx';
 import Login from './Components/Login/Login.jsx';
 import Item from './pages/Item.jsx';
+import Cart from './pages/Cart.jsx';
 
 const theme = createTheme({
   palette: {
@@ -37,6 +38,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/Login' element={<Login/>}/>
         <Route path='/Item' element={<Item/>}/>
+        <Route path='/Cart' element={<Cart/>}/>
       </Routes>
       </ThemeProvider>
    

@@ -55,7 +55,13 @@ function MainNavigation() {
               >
                 <AccountCircle />
               </IconButton>
-              <IconButton aria-label="ShoppingCartIcon" color="secondary">
+              <IconButton
+                aria-label="ShoppingCartIcon"
+                color="secondary"
+                onClick={() => {
+                  handleNavClick("/cart");
+                }}
+              >
                 <ShoppingCartRounded />
               </IconButton>
             </Box>

@@ -1,9 +1,16 @@
 import React from "react";
 import { useFormik } from "formik";
 import { TextField, Button, Box, Grid, Paper, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const formik = useFormik({
+   const navigate = useNavigate();
+
+  const handleNavClick = (destination) => {
+    navigate(destination);
+  };
+
+ const formik = useFormik({
     initialValues: {
       userName: "",
       password: "",
@@ -42,8 +49,17 @@ export default function Login() {
             </Grid>
 
             <Grid container item xs={12} justifyContent="center">
-              <Button color="primary" variant="contained" type="submit">
+              <Button color="secondary" variant="contained" type="submit">
               Log In
+            </Button>
+            </Grid>
+            <Grid container item xs={12} justifyContent="center">
+              <Button color="primary" variant="contained"
+                onClick={() => {
+                  handleNavClick("/register");
+                }}
+              >
+              Register
             </Button>
             </Grid>
           </Grid>
