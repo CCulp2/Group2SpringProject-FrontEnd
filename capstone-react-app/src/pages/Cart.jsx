@@ -6,10 +6,17 @@ import CardMedia from '@mui/material/CardMedia';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/system/Box';
 import Button from '@mui/material/Button';
+import { useNavigate } from "react-router-dom";
 
 
 // This is the shopping cart page
-function cartPage() {
+function CartPage() {
+  const navigate = useNavigate();
+
+  const handleNavClick = (destination) => {
+    navigate(destination);
+  };
+
 
 
 
@@ -72,7 +79,14 @@ function cartPage() {
           </Typography>
           </Box>
             <Box textAlign="center" sx={{ p: 4}}>
-            <Button variant="contained" color="secondary" size="large" style={{ width: 220, height: 50}}>
+            <Button variant="contained"
+              color="secondary"
+              size="large"
+              style={{ width: 220, height: 50}}
+              onClick={() => {
+              handleNavClick('/Confirmation');
+              }}
+            >
               Confirm Purchase
             </Button>
             </Box>
@@ -82,4 +96,4 @@ function cartPage() {
   )
 }
 
-export default cartPage;
+export default CartPage;

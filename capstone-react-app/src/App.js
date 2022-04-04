@@ -11,6 +11,7 @@ import Register from './Components/Register/Register.jsx';
 import Login from './Components/Login/Login.jsx';
 import Item from './pages/Item.jsx';
 import Cart from './pages/Cart.jsx';
+import Confirmation from './pages/Confirmation.jsx';
 
 const theme = createTheme({
   palette: {
@@ -39,6 +40,7 @@ function App() {
         <Route path='/Login' element={<Login/>}/>
         <Route path='/Item' element={<Item/>}/>
         <Route path='/Cart' element={<Cart/>}/>
+        <Route path='/Confirmation' element={<Confirmation/>}/>
       </Routes>
       </ThemeProvider>
    
