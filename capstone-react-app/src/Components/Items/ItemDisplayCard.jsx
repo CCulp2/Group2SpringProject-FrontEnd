@@ -2,10 +2,6 @@ import {  CssBaseline,  Grid, Typography,  CardActionArea } from "@mui/material"
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { useEffect, useState } from "react";
-import { getItemsByGenderAndType } from "../Components/Items/ItemsService";
-// import {mensTops} from "../data";
-
 
 function ItemDisplayCard(props) {
     

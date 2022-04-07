@@ -7,6 +7,7 @@ import Men from './pages/Men.js';
 import Women from './pages/Women.js';
 import Test from './pages/Test.js';
 import { createTheme, ThemeProvider } from '@mui/material';
+import ItemDisplayCard from './Components/Items/ItemDisplayCard.jsx';
 import Register from './Components/Register/Register.jsx';
 import Login from './Components/Login/Login.jsx';
 import Item from './pages/Item.jsx';
