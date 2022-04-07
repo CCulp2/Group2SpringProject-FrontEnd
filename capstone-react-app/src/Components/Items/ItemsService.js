@@ -23,7 +23,7 @@ export async function addItem(item) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            product_name: item.itemName,
+            name: item.itemName,
             quantity_in_stock: item.quantityInStock,
             unit_price: item.price,
             productSize: item.size,
@@ -47,10 +47,26 @@ export async function getItemsByGenderAndType(gender, type) {
   })
   .then(data => {
       console.log(data);
-      return data;
+      return filterItemsForDisplay(data);
   })
   .catch(err => {
       console.log("No database connection available.");
       console.log(err);
   });
+}
+
+function filterItemsForDisplay(items) {
+    var currentItem;
+    var itemsArray = [];
+
+    items.forEach(element => {
+        console.log(element);
+        if (element.name !== currentItem) {
+            currentItem = element.name;
+            itemsArray.push(element);
+        } else {
+
+        }
+    });
+    return itemsArray;    
 }

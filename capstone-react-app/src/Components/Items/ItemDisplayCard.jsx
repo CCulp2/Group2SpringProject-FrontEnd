@@ -1,47 +1,38 @@
 import {  CssBaseline,  Grid, Typography,  CardActionArea } from "@mui/material";
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import { useEffect, useState } from "react";
 import { getItemsByGenderAndType } from "../Components/Items/ItemsService";
 // import {mensTops} from "../data";
 
 
-function MensTops() {
-    const [items, setItems] = React.useState([]); 
-
-    React.useEffect(() => {
-        getItemsByGenderAndType("MALE", "TOPS").then((data) => {
-            return setItems(data);
-        });
-    },[]);
-
+function ItemDisplayCard(props) {
+    
     return  (
         <>
         <CssBaseline>
         <Grid container spacing={3} >
-                {items.map(item => (
             <Grid item xs={4}>
                 <Card sx={{ maxWidth: 500}}>
                     <CardActionArea>
                         <CardMedia
                         component="img"
                         height="300"
-                        image={item.product_img_url}
+                        image={props.product_img_url}
                         />
                         <CardContent>
                             <Typography variant="h5" component="div">
-                                {item.name}
+                                {props.name}
                             </Typography>
                         </CardContent>
                     </CardActionArea>
                     </Card>
                 </Grid>
-                    ))}
         </Grid>
         </CssBaseline> 
         </>
     )
 }
 
-export default MensTops;
+export default ItemDisplayCard;
