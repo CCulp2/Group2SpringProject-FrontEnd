@@ -41,12 +41,10 @@ export async function getItemsByGenderAndType(gender, type) {
     
   return fetch(PRODUCT_API_URL + "/search?gender="+ gender + "&type=" + type)
   .then(res => {
-    console.log(res);
       return res.json();
       
   })
   .then(data => {
-      console.log(data);
       return filterItemsForDisplay(data);
   })
   .catch(err => {
@@ -60,7 +58,6 @@ function filterItemsForDisplay(items) {
     var itemsArray = [];
 
     items.forEach(element => {
-        console.log(element);
         if (element.name !== currentItem) {
             currentItem = element.name;
             itemsArray.push(element);
