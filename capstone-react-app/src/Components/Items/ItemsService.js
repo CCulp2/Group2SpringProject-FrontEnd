@@ -76,3 +76,11 @@ function filterItemsForDisplay(items) {
   });
   return itemsArray;
 }
+
+export function convertItemNameToParam(name) {
+    return name.replace(" ", "-");
+}
+
+export function convertParamToItemName(param) {
+    return param.replace("-", " ");
+}

@@ -39,7 +39,7 @@ function App() {
         <Route path='/test' element={<Test/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/Login' element={<Login/>}/>
-        <Route path='/Item' element={<Item/>}/>
+        <Route path='/Item/:itemParameterizedName' element={<Item/>}/>
         <Route path='/Cart' element={<Cart/>}/>
         <Route path='/Confirmation' element={<Confirmation/>}/>
       </Routes>

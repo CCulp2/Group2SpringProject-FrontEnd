@@ -13,10 +13,11 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
-import { getItemByName } from '../Components/Items/ItemsService'
+import { getItemByName, convertParamToItemName } from '../Components/Items/ItemsService'
+import { useParams } from 'react-router-dom'
 
 
-function Item(props) {
+function Item() {
   // Handles Product @Size ---------{
   const [size, setSize] = React.useState("medium");
 
@@ -34,10 +35,12 @@ function Item(props) {
 // }---------------------------------------------------
 
 // fetch for items on the items page
+const parameterizedItemName = useParams();
 const [itemName, setItemName] = React.useState(0);
 const [items, setItems] = React.useState(0);
 
 React.useEffect(() => {
+  setItemName(convertParamToItemName(parameterizedItemName))
   getItemByName(itemName).then(res => setItems(res))
 }, [items]);
 
