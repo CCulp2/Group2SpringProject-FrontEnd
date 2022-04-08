@@ -13,10 +13,10 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
-import { getAllItems } from '../Components/Items/ItemsService'
+import { getItemByName } from '../Components/Items/ItemsService'
 
 
-function Item() {
+function Item(props) {
   // Handles Product @Size ---------{
   const [size, setSize] = React.useState("medium");
 
@@ -34,10 +34,11 @@ function Item() {
 // }---------------------------------------------------
 
 // fetch for items on the items page
-const [items, setItems] = React.useState(0)
+const [itemName, setItemName] = React.useState(0);
+const [items, setItems] = React.useState(0);
 
 React.useEffect(() => {
-  getAllItems().then(data => setItems(data)).then(console.log(items));
+  getItemByName(itemName).then(res => setItems(res))
 }, [items]);
 
 
