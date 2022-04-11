@@ -1,4 +1,5 @@
 import './Components/getSendTest.js'
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import MainNavigation from './layout/MainNavigation.js';
 import genderbar from './layout/genderbar.js';
@@ -11,9 +12,10 @@ import ItemDisplayCard from './Components/Items/ItemDisplayCard.jsx';
 import Register from './Components/Register/Register.jsx';
 import Login from './Components/Login/Login.jsx';
 import Item from './pages/Item.jsx';
-import Cart from './pages/Cart.jsx';
+import Cart from './Components/ShoppingCart/Cart'
 import Confirmation from './pages/Confirmation.jsx';
 import ItemNotFound from './pages/ItemNotFound.jsx';
+import React from 'react';
 
 const theme = createTheme({
   palette: {
@@ -25,6 +27,8 @@ const theme = createTheme({
     }
   }
 })
+
+
 
 function App() {
   return (

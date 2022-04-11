@@ -23,8 +23,7 @@ function Item() {
   // Handles Product @Size and change item ---------{
   const [size, setSize] = React.useState("M");
 
-  const handleSize = (event, newSize) => {
-    
+  const handleSize = (event, newSize) => {    
     if (newSize !== null) {
       setSize(newSize);
       let index = items.map((items) => items.productSize).indexOf(newSize);
@@ -40,6 +39,11 @@ function Item() {
     setQuantity(event.target.value);
   };
   // }---------------------------------------------------
+
+  // Handles Add To Cart ------- {
+   const handleAddToCart = (selectedItem, quantity) => {
+    
+   } 
 
   // fetch for items on the items page
   const { itemParameterizedName } = useParams();
@@ -148,7 +152,7 @@ function Item() {
                     justifyContent="center"
                     justifyItems="center"
                   >
-                    <Button variant="contained" color="secondary">
+                    <Button variant="contained" color="secondary" onClick={handleAddToCart}>
                       Add to Cart
                     </Button>
                   </Grid>
