@@ -9,7 +9,7 @@ function ItemDisplayCard(props) {
   let navigate = useNavigate();
   return (
     <>
-    <div onClick={() => navigate("/item/" + convertItemNameToParam(props.name))}>
+    <div onClick={() => navigate("/item/" + convertItemNameToParam(props.name.toString()))}>
       <Card sx={{ maxWidth: 500 }}>
         <CardActionArea>
           <CardMedia

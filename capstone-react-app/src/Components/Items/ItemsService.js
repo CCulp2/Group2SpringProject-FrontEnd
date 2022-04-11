@@ -21,6 +21,7 @@ export async function getItem(id) {
 }
 
 export async function getItemByName(name) {
+    name = convertItemNameToParam(name);
   return fetch(PRODUCT_API_URL + "/product?name=" + name)
     .then((res) => {
       return res.json();
@@ -78,9 +79,11 @@ function filterItemsForDisplay(items) {
 }
 
 export function convertItemNameToParam(name) {
-    return name.replace(" ", "-");
+    let param = name.replaceAll(" ", "-");
+    return param;
 }
 
 export function convertParamToItemName(param) {
-    return param.replace("-", " ");
+    let name = param.replaceAll("-", " ");
+    return name;
 }

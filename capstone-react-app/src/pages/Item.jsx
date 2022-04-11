@@ -13,18 +13,23 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
-import { getItemByName, convertParamToItemName } from '../Components/Items/ItemsService'
-import { useParams } from 'react-router-dom'
-
+import {
+  getItemByName,
+  convertParamToItemName,
+} from "../Components/Items/ItemsService";
+import { useParams } from "react-router-dom";
 
 function Item() {
-  // Handles Product @Size ---------{
+  // Handles Product @Size and change item ---------{
   const [size, setSize] = React.useState("medium");
 
   const handleSize = (event, newSize) => {
     setSize(newSize);
+    setSelectedItem((newSize) => {
+      items.find()
+    })
   };
-// }--------------------------------------------------
+  // }--------------------------------------------------
 
   // Handles Product @Quantity ---------{
   const [quantity, setQuantity] = React.useState("1");
@@ -32,38 +37,57 @@ function Item() {
   const handleQuantity = (event) => {
     setQuantity(event.target.value);
   };
-// }---------------------------------------------------
+  // }---------------------------------------------------
 
-// fetch for items on the items page
-const parameterizedItemName = useParams();
-const [itemName, setItemName] = React.useState(0);
-const [items, setItems] = React.useState(0);
+  // fetch for items on the items page
+  const { itemParameterizedName } = useParams();
+  const [itemName, setItemName] = React.useState(convertParamToItemName(itemParameterizedName));
+  const [items, setItems] = React.useState([]);
+  const [selectedItem, setSelectedItem] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
-React.useEffect(() => {
-  setItemName(convertParamToItemName(parameterizedItemName))
-  getItemByName(itemName).then(res => setItems(res))
-}, [items]);
+  React.useEffect(() => {
+    getItemByName(itemName)
+      .then((data) => { 
+      setItems(data);
+      setSelectedItem(data[0]);
+      setIsLoading(false);
+     });
+  }, []);
+
+  // Select Order button
+  const handleAddToOrder = (event) => {
+
+  }
 
 
+  // Begin display
+   if (isLoading) {
+     return (<p>Is loading</p>)
+  }
+
+  
   return (
     <>
       <CssBaseline>
         <Container maxWidth="lg" sx={{ pt: "40px" }}>
           <Paper elevation={3} maxWidth="500px">
             <Grid container spacing={2}>
-
               {/* This is the left side of the Paper */}
               {/* This contains on the Product @Photo */}
 
-              <Grid item md={6}
-                    sx={{
-                  mb: '20px', 
-                }}>
+              <Grid
+                item
+                md={6}
+                sx={{
+                  mb: "20px",
+                }}
+              >
                 <Card>
                   <CardMedia
                     component="img"
                     height="700"
-                    image={items.product_img_url}
+                    image={selectedItem.product_img_url}
                   />
                 </Card>
               </Grid>
@@ -73,16 +97,13 @@ React.useEffect(() => {
                   spacing={6}
                   direction="row"
                   justifyContent="center"
-                  >
-                  
+                >
                   {/* Product @Name */}
                   <Grid item sm={12}>
-                    <Typography variant="h2">
-                {items.product_name}
-                    </Typography>
+                    <Typography variant="h2">{selectedItem.name}</Typography>
                   </Grid>
 
-                    {/* Product @Size S M L XL */}
+                  {/* Product @Size S M L XL */}
                   <Grid item sm={12} justifyContent="center">
                     <ToggleButtonGroup
                       color="secondary"
@@ -97,8 +118,8 @@ React.useEffect(() => {
                     </ToggleButtonGroup>
                   </Grid>
 
-                    {/* Product @Quantity */}
-                    {/* Only goes from 1-3 */}
+                  {/* Product @Quantity */}
+                  {/* Only goes from 1-3 */}
                   <Grid item sm={12}>
                     <Select
                       labelId="item-quantity-select-label"
@@ -113,16 +134,12 @@ React.useEffect(() => {
                     </Select>
                   </Grid>
 
-                    {/* Product @Price */}
-                  <Grid item
-                        xs={12}
-                        justifyContent="center">
-                  <Typography variant="h4">
-                    {items.unit_price}
-                  </Typography>
+                  {/* Product @Price */}
+                  <Grid item xs={12} justifyContent="center">
+                    <Typography variant="h4">{selectedItem.unit_price}</Typography>
                   </Grid>
 
-                    {/* @Add to Cart Button */}
+                  {/* @Add to Cart Button */}
                   <Grid
                     item
                     xs={12}
@@ -135,14 +152,12 @@ React.useEffect(() => {
                     </Button>
                   </Grid>
 
-                    {/* Product @Description */}
+                  {/* Product @Description */}
                   <Grid item sm={12}>
                     <Typography>
-                      {/* FIXME: No product description coming from database/backend */}
-                      {items.product_description}
+                      {selectedItem.description}
                     </Typography>
                   </Grid>
-
                 </Grid>
               </Grid>
             </Grid>
