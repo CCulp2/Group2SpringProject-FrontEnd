@@ -1,40 +1,31 @@
-import {  CssBaseline,  Grid, Typography,  CardActionArea } from "@mui/material";
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import {mensPants} from '../data'
-
-
+import * as React from "react";
+import { getItemsByGenderAndType } from "../Components/Items/ItemsService";
+import ItemDisplayCard from "../Components/Items/ItemDisplayCard";
+import { CssBaseline, Grid } from "@mui/material";
 
 function MensPants() {
+  const [items, setItems] = React.useState([]);
 
-    return  (
-        <>
-        <CssBaseline>
-        <Grid container spacing={3} >
-                {mensPants.map(item => (
+  React.useEffect(() => {
+    getItemsByGenderAndType("MALE", "PANTS").then((data) => {
+      return setItems(data);
+    });
+  }, []);
+
+  return (
+    <CssBaseline>
+      <Grid container spacing={3}>
+        {items.map(item => (
             <Grid item xs={4}>
-                <Card sx={{ maxWidth: 500}}>
-                    <CardActionArea>
-                        <CardMedia
-                        component="img"
-                        height="300"
-                        image={item.img}
-                        />
-                        <CardContent>
-                            <Typography variant="h5" component="div">
-                                {item.title}
-                            </Typography>
-                        </CardContent>
-                    </CardActionArea>
-                    </Card>
-                </Grid>
-                    ))}
+        <ItemDisplayCard
+          product_img_url={item.product_img_url}
+          name={item.name}
+        />
         </Grid>
-        </CssBaseline> 
-        </>
-    )
+        ))}
+      </Grid>
+    </CssBaseline>
+  );
 }
 
 export default MensPants;
