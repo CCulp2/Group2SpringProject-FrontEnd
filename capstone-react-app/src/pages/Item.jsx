@@ -21,13 +21,15 @@ import { useParams } from "react-router-dom";
 
 function Item() {
   // Handles Product @Size and change item ---------{
-  const [size, setSize] = React.useState("medium");
+  const [size, setSize] = React.useState("M");
 
   const handleSize = (event, newSize) => {
-    setSize(newSize);
-    setSelectedItem((newSize) => {
-      items.find()
-    })
+    
+    if (newSize !== null) {
+      setSize(newSize);
+      let index = items.map((items) => items.productSize).indexOf(newSize);
+      setSelectedItem(items[index]);
+    }
   };
   // }--------------------------------------------------
 
@@ -41,32 +43,29 @@ function Item() {
 
   // fetch for items on the items page
   const { itemParameterizedName } = useParams();
-  const [itemName, setItemName] = React.useState(convertParamToItemName(itemParameterizedName));
+  const [itemName, setItemName] = React.useState(
+    convertParamToItemName(itemParameterizedName)
+  );
   const [items, setItems] = React.useState([]);
   const [selectedItem, setSelectedItem] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    getItemByName(itemName)
-      .then((data) => { 
+    getItemByName(itemName).then((data) => {
       setItems(data);
       setSelectedItem(data[0]);
       setIsLoading(false);
-     });
+    });
   }, []);
 
   // Select Order button
-  const handleAddToOrder = (event) => {
-
-  }
-
+  const handleAddToOrder = (event) => {};
 
   // Begin display
-   if (isLoading) {
-     return (<p>Is loading</p>)
+  if (isLoading) {
+    return <p>Is loading</p>;
   }
 
-  
   return (
     <>
       <CssBaseline>
@@ -111,10 +110,10 @@ function Item() {
                       value={size}
                       onChange={handleSize}
                     >
-                      <ToggleButton value="small">S</ToggleButton>
-                      <ToggleButton value="medium">M</ToggleButton>
-                      <ToggleButton value="large">L</ToggleButton>
-                      <ToggleButton value="x-large">XL</ToggleButton>
+                      <ToggleButton value="S">S</ToggleButton>
+                      <ToggleButton value="M">M</ToggleButton>
+                      <ToggleButton value="L">L</ToggleButton>
+                      <ToggleButton value="XL">XL</ToggleButton>
                     </ToggleButtonGroup>
                   </Grid>
 
@@ -136,7 +135,9 @@ function Item() {
 
                   {/* Product @Price */}
                   <Grid item xs={12} justifyContent="center">
-                    <Typography variant="h4">{selectedItem.unit_price}</Typography>
+                    <Typography variant="h4">
+                      {selectedItem.unit_price}
+                    </Typography>
                   </Grid>
 
                   {/* @Add to Cart Button */}
@@ -154,9 +155,7 @@ function Item() {
 
                   {/* Product @Description */}
                   <Grid item sm={12}>
-                    <Typography>
-                      {selectedItem.description}
-                    </Typography>
+                    <Typography>{selectedItem.description}</Typography>
                   </Grid>
                 </Grid>
               </Grid>
