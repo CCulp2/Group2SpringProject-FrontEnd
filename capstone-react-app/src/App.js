@@ -13,6 +13,7 @@ import Login from './Components/Login/Login.jsx';
 import Item from './pages/Item.jsx';
 import Cart from './pages/Cart.jsx';
 import Confirmation from './pages/Confirmation.jsx';
+import ItemNotFound from './pages/ItemNotFound.jsx';
 
 const theme = createTheme({
   palette: {
@@ -42,6 +43,7 @@ function App() {
         <Route path='/Item/:itemParameterizedName' element={<Item/>}/>
         <Route path='/Cart' element={<Cart/>}/>
         <Route path='/Confirmation' element={<Confirmation/>}/>
+        <Route path='/ItemNotFound' element={<ItemNotFound/>}/>
       </Routes>
       </ThemeProvider>
    
