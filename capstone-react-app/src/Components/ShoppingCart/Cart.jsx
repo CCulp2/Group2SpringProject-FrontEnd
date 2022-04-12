@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 
 // This is the shopping cart page
+// This function maps the items in the cart to the cart page
+
 function CartPage(props) {
   const navigate = useNavigate();
   const { cartItems } = props;
@@ -23,6 +25,10 @@ function CartPage(props) {
   return (
     <CssBaseline>
       <Grid container>
+
+        {/* Cart @Contents */}
+        {/* This part of the grid displays all the items in the user's cart */}
+
         <Grid item xs={8}>
           <Paper
             elevation={3}
@@ -30,6 +36,7 @@ function CartPage(props) {
           >
             <Grid container>
               {/* Map over Items in Cart*/}
+              {/* eslint-disable-next-line */}
               {cartItems.map((item) => {
                 <Grid item xs={12}>
                   <Card sx={{ display: "flex" }}>
@@ -75,6 +82,8 @@ function CartPage(props) {
         </Grid>
 
         {/* Cart @Summary */}
+        {/* This half of the grid shows the total price of the items in the cart. */}
+
         <Grid item xs={4} sx={{ marginY: 10 }}>
           <Box sx={{ textAlign: "right", pr: 12 }}>
             <Typography variant="h4" component="h4">

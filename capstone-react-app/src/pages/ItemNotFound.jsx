@@ -1,5 +1,6 @@
 import { Typography, Paper, Grid, CssBaseline } from '@mui/material';
 
+// This is the page that is displayed when the user tries to access an item that does not exist.
 
 function ItemNotFound() {
   

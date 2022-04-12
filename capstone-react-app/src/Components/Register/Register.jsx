@@ -6,9 +6,6 @@ import {
   Paper,
   Typography,
   MenuItem,
-  InputLabel,
-  Form,
-  FormGroup
 } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -64,7 +61,7 @@ export default function Register() {
               <Typography variant="h3">Sign-Up</Typography>
             </Grid>
 
-            {/* Username */}
+            {/* @Username */}
             <Grid container item xs={12} justifyContent="center">
               <TextField
                 id="username"
@@ -82,7 +79,7 @@ export default function Register() {
               />
             </Grid>
 
-            {/* Password */}
+            {/* @Password */}
             <Grid container item xs={12} pb={4} justifyContent="center">
               <TextField
                 id="password"
@@ -100,7 +97,7 @@ export default function Register() {
               />
             </Grid>
 
-            {/* Name container */}
+            {/* @Name container */}
             <Grid
               container
               item
@@ -109,7 +106,7 @@ export default function Register() {
               pb={4}
               justifyContent="center"
             >
-              {/* First name */}
+              {/* @First name */}
               <Grid item>
                 <TextField
                   id="first_name"
@@ -129,7 +126,7 @@ export default function Register() {
                 />
               </Grid>
 
-              {/* last name */}
+              {/* @Last name */}
               <Grid item>
                 <TextField
                   id="last_name"
@@ -148,7 +145,7 @@ export default function Register() {
               </Grid>
             </Grid>
 
-            {/* Address container */}
+            {/* @Address container */}
             <Grid container item xs={12} spacing={2} justifyContent="center">
               {/* Street Address */}
               <Grid item>
@@ -171,7 +168,7 @@ export default function Register() {
                 />
               </Grid>
 
-              {/* City */}
+              {/* @City */}
               <Grid item>
                 <TextField
                   id="city"
@@ -188,7 +185,7 @@ export default function Register() {
               </Grid>
             </Grid>
 
-            {/* State */}
+            {/* @State */}
             <Grid container item xs={12} justifyContent="center">
               <TextField
                 sx={{minWidth: 120}}

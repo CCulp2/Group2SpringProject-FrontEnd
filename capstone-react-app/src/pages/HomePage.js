@@ -1,10 +1,14 @@
 import { Card, CardMedia, Container, CssBaseline, Grid, CardActions, Button } from "@mui/material";
 
+// This funcion is used to export the HomePage component.
+// This page will be displayed as the website's root address.
+
 function HomePage() {
     return ( 
         <>
         <CssBaseline>
-            <Container maxWidth='xl'>
+            <Container maxWidth='xl'
+              sx={{ pt: "20px"}}>
             <Grid container spacing={1} direction="row" justifyContent="center" >
                 <Grid item>
                     <Card>

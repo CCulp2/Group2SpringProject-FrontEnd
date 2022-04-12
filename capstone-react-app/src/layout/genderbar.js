@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import {   CssBaseline, Grid, Container, Button,  } from '@mui/material';
 
+// This contains the blue tinted bar with the Men/Women buttons
+
 function genderbar() {
     return (
         <>

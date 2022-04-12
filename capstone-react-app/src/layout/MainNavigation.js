@@ -5,9 +5,12 @@ import {
   Button,
   Box,
   IconButton,
+  Typography,
 } from "@mui/material";
 import { AccountCircle, ShoppingCartRounded } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+
+// This page renders the main navigation bar shown on every page
 
 function MainNavigation() {
   const navigate = useNavigate();
@@ -22,6 +25,8 @@ function MainNavigation() {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="relative">
           <Toolbar>
+
+            {/* This box houses the storename button. This will redired to the home page */}
             <Box sx={{ m: 0 }}>
               <Button
                 variant="text"
@@ -31,20 +36,20 @@ function MainNavigation() {
                   handleNavClick("/");
                 }}
               >
-                PrickleBack
-              </Button>
-
-              <Button
-                variant="contained"
-                color="secondary"
-                size="small"
-                onClick={() => {
-                  handleNavClick("/test");
-                }}
-              >
-                getSendTest
+                <Typography 
+                  sx={{
+                    fontFamily: "monospace",
+                    fontWeight: "oblique",
+                    color: "text",
+                    fontSize: 30
+                  }}
+                  >
+                ByteWear
+              </Typography>
               </Button>
             </Box>
+
+              {/* This box is dedicated to the shopping cart icon/user icon */}
             <Box sx={{ ml: "auto" }}>
               <IconButton
                 aria-label="Profile"

@@ -1,5 +1,7 @@
-import {  CssBaseline,  Grid, Typography,  CardActionArea } from "@mui/material";
+import {  CssBaseline,  Grid, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
+
+// This is the confirmation page, which is displayed after the user has completed an order.
 
 function confirmation() {
   return (

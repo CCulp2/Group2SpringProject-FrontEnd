@@ -47,6 +47,7 @@ function Item() {
 
   // fetch for items on the items page
   const { itemParameterizedName } = useParams();
+  // eslint-disable-next-line
   const [itemName, setItemName] = React.useState(
     convertParamToItemName(itemParameterizedName)
   );
@@ -60,9 +61,11 @@ function Item() {
       setSelectedItem(data[0]);
       setIsLoading(false);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Select Order button
+  // eslint-disable-next-line
   const handleAddToOrder = (event) => {};
 
   // Begin display

@@ -7,6 +7,9 @@ import MensShorts from '../pages/MensShorts';
 import MensSweaters from '../pages/MensSweaters';
 
 
+// This function is used to create the tab panel for the left nav bar
+// This filters the data based on the tab selected
+
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -30,6 +33,7 @@ function TabPanel(props) {
     );
 }
 
+// This is the default props for the component
 TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
@@ -45,6 +49,8 @@ function a11yProps(index) {
         'aria-controls': 'vertical-tabpanel-${index}',
     };
 }
+
+// This is the component that is rendered on the page for the left nav bar
 
 function LeftNavBarMen() {
     const [value, setValue] = React.useState(0);

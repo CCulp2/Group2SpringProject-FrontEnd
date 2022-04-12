@@ -6,6 +6,7 @@ import WomensPants from '../pages/WomensPants';
 import WomensShorts from '../pages/WomensShorts';
 import WomensSweaters from '../pages/WomensSweaters';
 
+// This creates a component that will render the content of the tab panel
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -42,6 +43,8 @@ function a11yProps(index) {
         'aria-controls': 'vertical-tabpanel-${index}',
     };
 }
+
+// This renders the content of the tab panel
 
 function LeftNavBarWomen() {
     const [value, setValue] = React.useState(0);

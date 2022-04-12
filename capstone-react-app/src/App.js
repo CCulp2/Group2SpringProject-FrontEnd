@@ -1,5 +1,4 @@
 import './Components/getSendTest.js'
-import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import MainNavigation from './layout/MainNavigation.js';
 import genderbar from './layout/genderbar.js';
@@ -8,14 +7,19 @@ import Men from './pages/Men.js';
 import Women from './pages/Women.js';
 import Test from './pages/Test.js';
 import { createTheme, ThemeProvider } from '@mui/material';
-import ItemDisplayCard from './Components/Items/ItemDisplayCard.jsx';
 import Register from './Components/Register/Register.jsx';
 import Login from './Components/Login/Login.jsx';
 import Item from './pages/Item.jsx';
 import Cart from './Components/ShoppingCart/Cart'
 import Confirmation from './pages/Confirmation.jsx';
 import ItemNotFound from './pages/ItemNotFound.jsx';
+import Footer from './layout/Footer.jsx';
 import React from 'react';
+
+// This constant is used to create our theme for the website.
+// It is used in the ThemeProvider component.
+// This allows us to change the default colors of the website.
+// All other creative changes are handled within the scope of the components.
 
 const theme = createTheme({
   palette: {
@@ -28,12 +32,15 @@ const theme = createTheme({
   }
 })
 
-
+// This is the main app. It is the parent of all other components.
+// All of the routing is declared in the App function.
 
 function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+
+        {/* Calling the MainNavigation components here makes sure they are always on top of the page. */}
       {MainNavigation()}
       {genderbar()}
       
@@ -49,8 +56,8 @@ function App() {
         <Route path='/Confirmation' element={<Confirmation/>}/>
         <Route path='/ItemNotFound' element={<ItemNotFound/>}/>
       </Routes>
+      {Footer()}
       </ThemeProvider>
-   
     </div>
     
   );

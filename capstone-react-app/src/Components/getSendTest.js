@@ -16,6 +16,7 @@ function postTest(){
 //simple get reqeust
 function getTest(){
     
+  // eslint-disable-next-line
     var resultsBox = 
 
     fetch('http://localhost:8080/api/v1/customer')
