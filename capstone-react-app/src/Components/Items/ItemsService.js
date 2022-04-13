@@ -1,5 +1,7 @@
+import { API_URL_BASE } from "../APIUrlBase";
 
-const PRODUCT_API_URL = "http://127.0.0.1:8080/api/v1/product";
+
+const PRODUCT_API_URL = API_URL_BASE + "/product";
 
 export async function getAllItems() {
   return fetch(PRODUCT_API_URL)
