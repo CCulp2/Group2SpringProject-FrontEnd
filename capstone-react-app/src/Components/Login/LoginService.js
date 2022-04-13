@@ -1,9 +1,11 @@
 import { API_URL_BASE } from "../APIUrlBase"
+import { storeJWT } from "./JWTService";
+
 
 const LOGIN_BASE = API_URL_BASE + '/login'
 const abort = new AbortController();
 
-export async function Login(username, password) {
+export async function LoginSubmit(username, password) {
     return fetch(LOGIN_BASE, {
         method: "post",
         headers: { "Content-Type": "application/json" },
@@ -11,6 +13,6 @@ export async function Login(username, password) {
         username: username,
         password: password
     })
-    }).then(res => res.json)
+    }).then(res => storeJWT(res));
     
 }

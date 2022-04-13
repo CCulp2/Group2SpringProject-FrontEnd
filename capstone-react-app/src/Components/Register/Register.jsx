@@ -48,7 +48,7 @@ export default function Register() {
     initialValues,
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(addCustomer(values));
+      addCustomer(values);
     }
   });
 
