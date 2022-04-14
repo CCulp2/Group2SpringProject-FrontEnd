@@ -18,6 +18,7 @@ import {
   convertParamToItemName,
 } from "../Components/Items/ItemsService";
 import { useParams } from "react-router-dom";
+import { addToShoppingCart } from '../Components/ShoppingCart/CartService'
 
 function Item() {
   // Handles Product @Size and change item ---------{
@@ -42,7 +43,9 @@ function Item() {
 
   // Handles Add To Cart ------- {
    const handleAddToCart = (selectedItem, quantity) => {
-    
+      for (let i = 0; i <= quantity; i++) {
+        addToShoppingCart(selectedItem);
+      }
    } 
 
   // fetch for items on the items page
@@ -63,10 +66,6 @@ function Item() {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // Select Order button
-  // eslint-disable-next-line
-  const handleAddToOrder = (event) => {};
 
   // Begin display
   if (isLoading) {
