@@ -15,7 +15,7 @@ function ItemDisplayCard(props) {
           <CardMedia
             component="img"
             height="300"
-            image={props.product_img_url}
+            image={props.productImgUrl}
           />
           <CardContent>
             <Typography variant="h5" component="div">

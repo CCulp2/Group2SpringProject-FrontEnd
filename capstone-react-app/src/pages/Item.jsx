@@ -92,7 +92,7 @@ function Item() {
                   <CardMedia
                     component="img"
                     height="700"
-                    image={selectedItem.product_img_url}
+                    image={selectedItem.productImgUrl}
                   />
                 </Card>
               </Grid>

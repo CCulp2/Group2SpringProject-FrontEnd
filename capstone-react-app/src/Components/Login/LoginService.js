@@ -1,19 +1,33 @@
-import { API_URL_BASE } from "../APIUrlBase"
-import { storeJWT } from "./JWTService";
+import { API_URL_BASE } from "../APIUrlBase";
+import { setLoggedInCustomer } from "../Customer/CustomerService";
 
-
-const LOGIN_BASE = API_URL_BASE + '/customer/login'
+const LOGIN_BASE = API_URL_BASE + "/customer/login";
 const abort = new AbortController();
 
+// export async function LoginSubmit(username, password) {
+//   return fetch(LOGIN_BASE, {
+//     method: "post",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({
+//       username: username,
+//       password: password,
+//     }),
+//   })
+//     .then((res) => {
+//         if (res.ok) return res.json()
+//     })
+//     .then();
+// }
+
 export async function LoginSubmit(username, password) {
-    return fetch(LOGIN_BASE + "?username=" + username + "&password=" + password, {
+    const login = await fetch(LOGIN_BASE, {
         method: "post",
-        headers: { 'Content-Type': 'application/json'},
-        body: {
-        "username": username,
-        "password": password
-    }
-    }).then(res => //storeJWT(res));
-    console.log(res.json()));
+        headers: {"content-type": "application/json"},
+        body: JSON.stringify({username: username, password: password})
+    });
+    const result = await login.json();
     
+    if (result.id !== null) {
+        setLoggedInCustomer(result.id);
+    }
 }

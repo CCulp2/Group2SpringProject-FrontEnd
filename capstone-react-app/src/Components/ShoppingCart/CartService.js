@@ -16,7 +16,7 @@ export function removeFromShoppingCart(item) {
     }
 }
 
-export function getShoppingCartJSON() {
+export function getShoppingCartItems() {
     if (cartExists()) {
         return JSON.parse(localStorage.getItem('cart'));
     }
