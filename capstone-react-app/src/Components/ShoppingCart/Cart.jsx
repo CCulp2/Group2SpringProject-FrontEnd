@@ -13,6 +13,7 @@ import {
   formatTotals,
   getShoppingCartItems,
   priceOfAllCartItems,
+  removeFromShoppingCart,
 } from "./CartService";
 import CartItem from "./CartItem";
 
@@ -33,9 +34,11 @@ function CartPage() {
     total: 0,
   };
 
-  const handleRemove = (key) => {
-      setCurrentCart(currentCart.filter((item, index) => item[index] !== key))
-    
+  const handleRemove = (cartIdToDelete) => {
+    const newCart = [...currentCart];
+    newCart.filter((item) => item.cartId !== cartIdToDelete)
+    removeFromShoppingCart(cartIdToDelete)
+    setCurrentCart(getShoppingCartItems());
   };
 
   const [cartTotals, setCartTotals] = React.useState(0);
@@ -65,7 +68,8 @@ function CartPage() {
                   name={item.name}
                   unit_price={item.unit_price}
                   productSize={item.productSize}
-                  handleRemove={() => handleRemove}
+                  cartId={item.cartId}
+                  handleRemove={handleRemove}
                 />
               ))}
             </Grid>

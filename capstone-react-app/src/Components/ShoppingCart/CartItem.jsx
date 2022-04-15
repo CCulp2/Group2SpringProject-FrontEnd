@@ -16,7 +16,7 @@ function CartItem(props) {
               component="img"
               alt="Product Image"
               height="250"
-              image={props.productImgUrl}
+              image={props.productImgUrl} 
               title="Product Image"
             />
           </CardActionArea>
@@ -39,7 +39,7 @@ function CartItem(props) {
             <Typography gutterBottom variant="h5" component="h4">
               Size: {props.productSize}
             </Typography>
-            <Button variant="outlined" color="secondary" onClick={props.handleRemove(props.key)}>
+            <Button variant="outlined" color="secondary" onClick={() => props.handleRemove(props.cartId)}>
               Remove from Cart
             </Button>
           </CardContent>

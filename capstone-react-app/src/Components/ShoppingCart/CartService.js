@@ -1,4 +1,5 @@
 export function addToShoppingCart(item) {
+    item.cartId = generateCartID()
     if (localStorage.getItem('cart') === null) {
         cartSetUp();
         let currentCart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -11,9 +12,9 @@ export function addToShoppingCart(item) {
     }    
 }
 
-export function removeFromShoppingCart(item) {
+export function removeFromShoppingCart(cartIdToRemove) {
         let currentCart = JSON.parse(localStorage.getItem('cart'));
-        let products = currentCart.filter(incartItem => incartItem.id !== item.id );
+        let products = currentCart.filter(incartItem => incartItem.cartId !== cartIdToRemove);
         localStorage.setItem('cart', JSON.stringify(products));
 }
 
@@ -53,6 +54,15 @@ export function cartSetUp() {
     // let a = []
     // a.push(JSON.parse(localStorage.getItem('cart')));
     localStorage.setItem('cart', JSON.stringify([]));
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+function generateCartID() {
+    let id = getRandomInt(300000);
+    return id;
 }
 
 var formatter = new Intl.NumberFormat('en-US', {
