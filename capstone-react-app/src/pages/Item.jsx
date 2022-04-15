@@ -43,10 +43,11 @@ function Item() {
 
   // Handles Add To Cart ------- {
    const handleAddToCart = (selectedItem, quantity) => {
-      for (let i = 0; i <= quantity; i++) {
-        addToShoppingCart(selectedItem);
+      // for (let i = 0; i <= quantity; i++) {
+      //   addToShoppingCart(selectedItem);
+      console.log(selectedItem);
       }
-   } 
+   
 
   // fetch for items on the items page
   const { itemParameterizedName } = useParams();
@@ -69,7 +70,7 @@ function Item() {
 
   // Begin display
   if (isLoading) {
-    return <p>Is loading</p>;
+    return (<p>Is loading</p>)
   }
 
   return (

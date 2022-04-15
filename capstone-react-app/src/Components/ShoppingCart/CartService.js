@@ -29,3 +29,16 @@ export function cartExists() {
         return true;
     }    
 }
+
+export function priceOfAllCartItems() {
+    var sum = 0;
+    let cart = getShoppingCartItems();
+    for(var item in cart) {
+        sum += item.unit_price;
+    }
+    return sum;
+}
+
+export function calculateTax(totalPrice) {
+    return priceOfAllCartItems() * 0.07;
+}

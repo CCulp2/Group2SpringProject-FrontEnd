@@ -7,19 +7,23 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/system/Box";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import { calculateTax, cartExists, getShoppingCartItems, priceOfAllCartItems } from "./CartService";
 
 // This is the shopping cart page
 // This function maps the items in the cart to the cart page
 
-function CartPage(props) {
+function CartPage() {
+  let loadCart = cartExists() ? getShoppingCartItems : 0;
+
   const navigate = useNavigate();
-  const { cartItems } = props;
+  const [currentCart, setCurrentCart] = React.useState(loadCart);
 
   const handleNavClick = (destination) => {
     navigate(destination);
   };
 
-  if (cartItems.length === 0) {
+
+  if (currentCart === 0) {
     return (<p>Cart is empty.</p>)
   }
   return (
@@ -46,7 +50,7 @@ function CartPage(props) {
                           component="img"
                           alt="Product Image"
                           height="250"
-                          image={item.product_img_url}
+                          image={item.productImgUrl}
                           title="Product Image"
                         />
                       </CardActionArea>
@@ -87,16 +91,16 @@ function CartPage(props) {
         <Grid item xs={4} sx={{ marginY: 10 }}>
           <Box sx={{ textAlign: "right", pr: 12 }}>
             <Typography variant="h4" component="h4">
-              Cart Total: $10.00
+              Cart Total: {priceOfAllCartItems()}
             </Typography>
             <Typography variant="h4" component="h4">
-              Tax: $0.00
+              Tax: {calculateTax()}
             </Typography>
             <Typography variant="h4" component="h4">
               -----------------------------
             </Typography>
             <Typography variant="h4" component="h4" color="secondary">
-              Total: $10.00
+              Total: {priceOfAllCartItems() + calculateTax()}
             </Typography>
           </Box>
           <Box textAlign="center" sx={{ p: 4 }}>
