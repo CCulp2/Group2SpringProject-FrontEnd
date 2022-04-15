@@ -19,7 +19,9 @@ export function removeFromShoppingCart(item) {
 }
 
 export function getShoppingCartItems() {
-    return JSON.parse(localStorage.getItem('cart'));
+    let a = [];
+    a = JSON.parse(localStorage.getItem('cart')) || [];
+    return a;
 }
 
 export function priceOfAllCartItems() {

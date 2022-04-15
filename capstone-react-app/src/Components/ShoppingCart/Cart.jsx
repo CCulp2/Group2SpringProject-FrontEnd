@@ -7,31 +7,35 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/system/Box";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import { calculateTax, getShoppingCartItems, priceOfAllCartItems } from "./CartService";
+import {
+  calculateTax,
+  getShoppingCartItems,
+  priceOfAllCartItems,
+} from "./CartService";
+import CartItem from "./CartItem";
 
 // This is the shopping cart page
 // This function maps the items in the cart to the cart page
 
 function CartPage() {
-  if (localStorage.getItem('cart') === null) {
-    setCurrentCart = 0;
-  }
-
   const navigate = useNavigate();
-  const [currentCart, setCurrentCart] = React.useState();
+  const [currentCart, setCurrentCart] = React.useState(getShoppingCartItems());
+  // if (localStorage.getItem("cart") === null) {
+  //   setCurrentCart(0);
+  // } else {
+  //   setCurrentCart(getShoppingCartItems());
+  // }
 
   const handleNavClick = (destination) => {
     navigate(destination);
   };
 
-
-  if (currentCart === 0) {
-    return (<p>Cart is empty.</p>)
+  if (currentCart === undefined) {
+    return <p>Cart is empty.</p>;
   }
   return (
     <CssBaseline>
       <Grid container>
-
         {/* Cart @Contents */}
         {/* This part of the grid displays all the items in the user's cart */}
 
@@ -42,47 +46,14 @@ function CartPage() {
           >
             <Grid container>
               {/* Map over Items in Cart*/}
-              {/* eslint-disable-next-line */}
-              {cartItems.map((item) => {
-                <Grid item xs={12}>
-                  <Card sx={{ display: "flex" }}>
-                    <Box sx={{ display: "flex", flexDirection: "column" }}>
-                      <CardActionArea>
-                        <CardMedia
-                          component="img"
-                          alt="Product Image"
-                          height="250"
-                          image={item.productImgUrl}
-                          title="Product Image"
-                        />
-                      </CardActionArea>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        pl: 1,
-                        pb: 1,
-                      }}
-                    >
-                      <CardContent sx={{ flex: "1 0 auto" }}>
-                        <Typography gutterBottom variant="h4" component="h4">
-                          {item.name}
-                        </Typography>
-                        <Typography gutterBottom variant="h5" component="h4">
-                          {item.unit_price}
-                        </Typography>
-                        <Typography gutterBottom variant="h5" component="h4">
-                          Size: {item.productSize}
-                        </Typography>
-                        <Button variant="outlined" color="secondary">
-                          Remove from Cart
-                        </Button>
-                      </CardContent>
-                    </Box>
-                  </Card>
-                </Grid>;
-              })}
+              {currentCart.map((item) => (
+                <CartItem
+                  productImgUrl={item.productImgUrl}
+                  name={item.name}
+                  unit_price={item.unit_price}
+                  productSize={item.productSize}
+                />
+              ))}
             </Grid>
           </Paper>
         </Grid>
