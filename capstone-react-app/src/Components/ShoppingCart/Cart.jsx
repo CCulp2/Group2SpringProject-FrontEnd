@@ -7,16 +7,18 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/system/Box";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import { calculateTax, cartExists, getShoppingCartItems, priceOfAllCartItems } from "./CartService";
+import { calculateTax, getShoppingCartItems, priceOfAllCartItems } from "./CartService";
 
 // This is the shopping cart page
 // This function maps the items in the cart to the cart page
 
 function CartPage() {
-  let loadCart = cartExists() ? getShoppingCartItems : 0;
+  if (localStorage.getItem('cart') === null) {
+    setCurrentCart = 0;
+  }
 
   const navigate = useNavigate();
-  const [currentCart, setCurrentCart] = React.useState(loadCart);
+  const [currentCart, setCurrentCart] = React.useState();
 
   const handleNavClick = (destination) => {
     navigate(destination);

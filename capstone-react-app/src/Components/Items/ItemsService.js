@@ -44,7 +44,7 @@ export async function addItem(item) {
       unit_price: item.price,
       productSize: item.size,
       gender: item.gender,
-      product_img_url: item.imageUrl,
+      productImgUrl: item.imageUrl,
       description: item.description,
       product_type: item.type,
     }),

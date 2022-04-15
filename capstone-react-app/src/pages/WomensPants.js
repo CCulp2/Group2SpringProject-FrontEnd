@@ -18,7 +18,7 @@ function WomensPants() {
         {items.map((item) => (
           <Grid item xs={4}>
             <ItemDisplayCard
-              product_img_url={item.product_img_url}
+              productImgUrl={item.productImgUrl}
               name={item.name}
             />
           </Grid>
