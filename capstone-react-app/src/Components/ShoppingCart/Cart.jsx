@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import {
   calculateTax,
+  formatTax,
+  formatTotals,
   getShoppingCartItems,
   priceOfAllCartItems,
 } from "./CartService";
@@ -20,15 +22,25 @@ import CartItem from "./CartItem";
 function CartPage() {
   const navigate = useNavigate();
   const [currentCart, setCurrentCart] = React.useState(getShoppingCartItems());
-  // if (localStorage.getItem("cart") === null) {
-  //   setCurrentCart(0);
-  // } else {
-  //   setCurrentCart(getShoppingCartItems());
-  // }
 
   const handleNavClick = (destination) => {
     navigate(destination);
   };
+
+  let totals = {
+    price: 0,
+    tax: 0,
+    total: 0,
+  };
+
+  const handleRemove = (key) => {
+      setCurrentCart(currentCart.filter((item, index) => item[index] !== key))
+    
+  };
+
+  const [cartTotals, setCartTotals] = React.useState(0);
+
+
 
   if (currentCart === undefined) {
     return <p>Cart is empty.</p>;
@@ -46,12 +58,14 @@ function CartPage() {
           >
             <Grid container>
               {/* Map over Items in Cart*/}
-              {currentCart.map((item) => (
+              {currentCart.map((item, index) => (
                 <CartItem
+                  key={index}
                   productImgUrl={item.productImgUrl}
                   name={item.name}
                   unit_price={item.unit_price}
                   productSize={item.productSize}
+                  handleRemove={() => handleRemove}
                 />
               ))}
             </Grid>
@@ -64,16 +78,16 @@ function CartPage() {
         <Grid item xs={4} sx={{ marginY: 10 }}>
           <Box sx={{ textAlign: "right", pr: 12 }}>
             <Typography variant="h4" component="h4">
-              Cart Total: {priceOfAllCartItems()}
+              Cart Total: {formatTotals(totals.price)}
             </Typography>
             <Typography variant="h4" component="h4">
-              Tax: {calculateTax()}
+              Tax: {formatTax(totals.tax)}
             </Typography>
             <Typography variant="h4" component="h4">
               -----------------------------
             </Typography>
             <Typography variant="h4" component="h4" color="secondary">
-              Total: {priceOfAllCartItems() + calculateTax()}
+              Total: {formatTotals(totals.total)}
             </Typography>
           </Box>
           <Box textAlign="center" sx={{ p: 4 }}>

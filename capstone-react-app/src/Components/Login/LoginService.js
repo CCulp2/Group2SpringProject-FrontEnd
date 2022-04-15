@@ -4,21 +4,6 @@ import { setLoggedInCustomer } from "../Customer/CustomerService";
 const LOGIN_BASE = API_URL_BASE + "/customer/login";
 const abort = new AbortController();
 
-// export async function LoginSubmit(username, password) {
-//   return fetch(LOGIN_BASE, {
-//     method: "post",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({
-//       username: username,
-//       password: password,
-//     }),
-//   })
-//     .then((res) => {
-//         if (res.ok) return res.json()
-//     })
-//     .then();
-// }
-
 export async function LoginSubmit(username, password) {
     const login = await fetch(LOGIN_BASE, {
         method: "post",
