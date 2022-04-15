@@ -33,7 +33,11 @@ export function priceOfAllCartItems() {
 }
 
 export function calculateTax(price) {
-    let sum =  price * 0.07;
+    let tax = 0.07;
+    let sum =  Number(price) * Number(tax);
+    if (isNaN(sum)) {
+        return 0;
+    }
     return sum;
 }
 
@@ -42,12 +46,8 @@ export function pricePlusTax(price, tax) {
     return sum;
 }
 
-export function formatTotals(price) {
-    return formatter.format(price);
-}
-
-export function formatTax(tax) {
-    return formatter.format(tax);
+export function formatDollarValues(value) {
+    return formatter.format(value);
 }
 
 export function cartSetUp() {
@@ -71,3 +71,18 @@ var formatter = new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
 });
+
+export function setTotals(currentCart) {
+    let totals = {
+        price: 0,
+        tax: 0,
+        total: 0,
+      };
+      totals.price = priceOfAllCartItems(currentCart);
+      totals.tax = calculateTax(totals.price);
+      totals.total = (Number(totals.price) + Number(totals.tax));
+      totals.price = formatDollarValues(totals.price);
+      totals.tax = formatDollarValues(totals.tax);
+      totals.total = formatDollarValues(totals.total);
+      return totals;
+}

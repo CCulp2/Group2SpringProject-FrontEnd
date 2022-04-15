@@ -8,11 +8,8 @@ import Box from "@mui/system/Box";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import {
-  calculateTax,
-  formatTax,
-  formatTotals,
   getShoppingCartItems,
-  priceOfAllCartItems,
+  setTotals,
   removeFromShoppingCart,
 } from "./CartService";
 import CartItem from "./CartItem";
@@ -28,20 +25,20 @@ function CartPage() {
     navigate(destination);
   };
 
-  let totals = {
-    price: 0,
-    tax: 0,
-    total: 0,
-  };
-
   const handleRemove = (cartIdToDelete) => {
     const newCart = [...currentCart];
     newCart.filter((item) => item.cartId !== cartIdToDelete)
     removeFromShoppingCart(cartIdToDelete)
     setCurrentCart(getShoppingCartItems());
+    // setCartTotals(getShoppingCartItems());
   };
 
-  const [cartTotals, setCartTotals] = React.useState(0);
+  const [cartTotals, setCartTotals] = React.useState(setTotals(getShoppingCartItems()));
+
+  React.useEffect(() => {
+    setCartTotals(setTotals(getShoppingCartItems()));
+  },[currentCart])
+
 
 
 
@@ -82,16 +79,16 @@ function CartPage() {
         <Grid item xs={4} sx={{ marginY: 10 }}>
           <Box sx={{ textAlign: "right", pr: 12 }}>
             <Typography variant="h4" component="h4">
-              Cart Total: {formatTotals(totals.price)}
+              Cart Total: {cartTotals.price}
             </Typography>
             <Typography variant="h4" component="h4">
-              Tax: {formatTax(totals.tax)}
+              Tax: {cartTotals.tax}
             </Typography>
             <Typography variant="h4" component="h4">
               -----------------------------
             </Typography>
             <Typography variant="h4" component="h4" color="secondary">
-              Total: {formatTotals(totals.total)}
+              Total: {cartTotals.total}
             </Typography>
           </Box>
           <Box textAlign="center" sx={{ p: 4 }}>
