@@ -9,3 +9,22 @@ export async function getCustomerById(id) {
         return data.json();
     })
 }
+
+export function setLoggedInCustomer(id) {
+    if (customerIsLoggedIn()) {
+        localStorage.removeItem('customerId');
+    }
+    localStorage.setItem('customerId', JSON.stringify(id));
+}
+
+export function customerIsLoggedIn() {
+    return (!localStorage.getItem('customerId') === null);
+}
+
+export function currentLoggedInCustomer() {
+    if (customerIsLoggedIn) {
+        return localStorage.getItem('customerId');
+    } else {
+        return null;
+    }
+}

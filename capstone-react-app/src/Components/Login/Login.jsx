@@ -2,23 +2,35 @@ import React from "react";
 import { useFormik } from "formik";
 import { TextField, Button, Box, Grid, Paper, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { LoginSubmit } from "./LoginService";
+import * as Yup from "yup";
+
+const initialValues = {
+  username: "",
+  password: ""
+} 
+
+const validationSchema = Yup.object({
+  username: Yup.string().min(2, "Enter a username").required(),
+  password: Yup.string().min(2, "Enter your password").required()
+})
 
 export default function Login() {
-   const navigate = useNavigate();
-
+  const navigate = useNavigate();   
   const handleNavClick = (destination) => {
     navigate(destination);
-  };
+  };  
 
  const formik = useFormik({
-    initialValues: {
-      userName: "",
-      password: "",
-    },
-  });
+    initialValues,
+    validationSchema,
+    onSubmit: async (values) => {
+      LoginSubmit(values.username, values.password);
+      console.log(values);
+    }});
 
   return (
-    <form>
+    <form onSubmit={formik.handleSubmit}>
       <Box py={4} px={50}>
         <Paper elevation={10}>
           <Grid container className="loginForm" py={4} spacing={2}>
@@ -29,12 +41,14 @@ export default function Login() {
 
             <Grid container item xs={12} justifyContent="center">
               <TextField
-                id="userName"
-                name="userName"
+                id="username"
+                name="username"
                 label="Username"
                 type="username"
-                value={formik.values.userName}
+                value={formik.values.username}
+                onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
+                error={formik.touched && Boolean(formik.errors.username)}
               />
             </Grid>
 
@@ -45,7 +59,9 @@ export default function Login() {
                 label="Password"
                 type="password"
                 value={formik.values.password}
+                onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
+                error={formik.touched && Boolean(formik.errors.password)}
               />
             </Grid>
 

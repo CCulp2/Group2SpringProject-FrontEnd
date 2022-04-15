@@ -7,25 +7,47 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/system/Box";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import {
+  getShoppingCartItems,
+  setTotals,
+  removeFromShoppingCart,
+} from "./CartService";
+import CartItem from "./CartItem";
 
 // This is the shopping cart page
 // This function maps the items in the cart to the cart page
 
-function CartPage(props) {
+function CartPage() {
   const navigate = useNavigate();
-  const { cartItems } = props;
+  const [currentCart, setCurrentCart] = React.useState(getShoppingCartItems());
 
   const handleNavClick = (destination) => {
     navigate(destination);
   };
 
-  if (cartItems.length === 0) {
-    return (<p>Cart is empty.</p>)
+  const handleRemove = (cartIdToDelete) => {
+    const newCart = [...currentCart];
+    newCart.filter((item) => item.cartId !== cartIdToDelete)
+    removeFromShoppingCart(cartIdToDelete)
+    setCurrentCart(getShoppingCartItems());
+    // setCartTotals(getShoppingCartItems());
+  };
+
+  const [cartTotals, setCartTotals] = React.useState(setTotals(getShoppingCartItems()));
+
+  React.useEffect(() => {
+    setCartTotals(setTotals(getShoppingCartItems()));
+  },[currentCart])
+
+
+
+
+  if (currentCart === undefined) {
+    return <p>Cart is empty.</p>;
   }
   return (
     <CssBaseline>
       <Grid container>
-
         {/* Cart @Contents */}
         {/* This part of the grid displays all the items in the user's cart */}
 
@@ -36,47 +58,17 @@ function CartPage(props) {
           >
             <Grid container>
               {/* Map over Items in Cart*/}
-              {/* eslint-disable-next-line */}
-              {cartItems.map((item) => {
-                <Grid item xs={12}>
-                  <Card sx={{ display: "flex" }}>
-                    <Box sx={{ display: "flex", flexDirection: "column" }}>
-                      <CardActionArea>
-                        <CardMedia
-                          component="img"
-                          alt="Product Image"
-                          height="250"
-                          image={item.product_img_url}
-                          title="Product Image"
-                        />
-                      </CardActionArea>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        pl: 1,
-                        pb: 1,
-                      }}
-                    >
-                      <CardContent sx={{ flex: "1 0 auto" }}>
-                        <Typography gutterBottom variant="h4" component="h4">
-                          {item.name}
-                        </Typography>
-                        <Typography gutterBottom variant="h5" component="h4">
-                          {item.unit_price}
-                        </Typography>
-                        <Typography gutterBottom variant="h5" component="h4">
-                          Size: {item.productSize}
-                        </Typography>
-                        <Button variant="outlined" color="secondary">
-                          Remove from Cart
-                        </Button>
-                      </CardContent>
-                    </Box>
-                  </Card>
-                </Grid>;
-              })}
+              {currentCart.map((item, index) => (
+                <CartItem
+                  key={index}
+                  productImgUrl={item.productImgUrl}
+                  name={item.name}
+                  unit_price={item.unit_price}
+                  productSize={item.productSize}
+                  cartId={item.cartId}
+                  handleRemove={handleRemove}
+                />
+              ))}
             </Grid>
           </Paper>
         </Grid>
@@ -87,16 +79,16 @@ function CartPage(props) {
         <Grid item xs={4} sx={{ marginY: 10 }}>
           <Box sx={{ textAlign: "right", pr: 12 }}>
             <Typography variant="h4" component="h4">
-              Cart Total: $10.00
+              Cart Total: {cartTotals.price}
             </Typography>
             <Typography variant="h4" component="h4">
-              Tax: $0.00
+              Tax: {cartTotals.tax}
             </Typography>
             <Typography variant="h4" component="h4">
               -----------------------------
             </Typography>
             <Typography variant="h4" component="h4" color="secondary">
-              Total: $10.00
+              Total: {cartTotals.total}
             </Typography>
           </Box>
           <Box textAlign="center" sx={{ p: 4 }}>
