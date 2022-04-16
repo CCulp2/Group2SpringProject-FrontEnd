@@ -1,5 +1,8 @@
 import { currentLoggedInCustomer } from "../Customer/CustomerService";
 import { getShoppingCartItems } from "../ShoppingCart/CartService";
+import { API_URL_BASE } from '../../Components/APIUrlBase'
+
+const ORDERS_API = API_URL_BASE + "/orders"
 
 function removeCartIdBeforeOrder(items) {
     let itemsForOrder = [...items]
@@ -19,6 +22,17 @@ export function prepareOrder(orders) {
         productsToAdd: [...cart]
     }
     
-    console.log(order);
+    sendOrder(order);
 }
 
+async function sendOrder(order) {
+    const connection = await fetch(ORDERS_API, {
+        method: 'post',
+        headers: {"content-type": "application/json"},
+        body: JSON.stringify(order)
+    });
+
+    const response = await connection.json();
+
+    console.log(response);
+}
