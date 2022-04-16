@@ -13,6 +13,7 @@ import {
   removeFromShoppingCart,
 } from "./CartService";
 import CartItem from "./CartItem";
+import { prepareOrder } from '../Confirmation/OrderAndConfirmationService'
 
 // This is the shopping cart page
 // This function maps the items in the cart to the cart page
@@ -98,7 +99,8 @@ function CartPage() {
               size="large"
               style={{ width: 220, height: 50 }}
               onClick={() => {
-                handleNavClick("/Confirmation");
+                // handleNavClick("/Confirmation");
+                prepareOrder()
               }}
             >
               Confirm Purchase
