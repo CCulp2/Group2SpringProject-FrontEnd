@@ -13,7 +13,7 @@ import {
   removeFromShoppingCart,
 } from "./CartService";
 import CartItem from "./CartItem";
-import { prepareOrder } from '../Confirmation/OrderAndConfirmationService'
+import { submitOrder } from '../Confirmation/OrderAndConfirmationService'
 
 // This is the shopping cart page
 // This function maps the items in the cart to the cart page
@@ -22,9 +22,9 @@ function CartPage() {
   const navigate = useNavigate();
   const [currentCart, setCurrentCart] = React.useState(getShoppingCartItems());
 
-  const handleNavClick = (destination) => {
-    navigate(destination);
-  };
+  // const handleNavClick = (destination) => {
+  //   navigate(destination, props);
+  // };
 
   const handleRemove = (cartIdToDelete) => {
     const newCart = [...currentCart];
@@ -100,8 +100,12 @@ function CartPage() {
               style={{ width: 220, height: 50 }}
               onClick={() => {
                 // handleNavClick("/Confirmation");
-                prepareOrder()
-              }}
+                let submittedOrder = submitOrder();
+                if (submittedOrder === 0) {
+
+                } else {
+                navigate('/confirmation', {order: submitOrder})
+                }}}
             >
               Confirm Purchase
             </Button>

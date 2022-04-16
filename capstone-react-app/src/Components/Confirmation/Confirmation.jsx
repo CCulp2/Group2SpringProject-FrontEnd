@@ -1,28 +1,35 @@
 import {  CssBaseline,  Grid, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
+import { useState } from 'react';
+import { useLocation } from "react-router";
+import { currentLoggedInCustomer } from "../Customer/CustomerService";
 
 // This is the confirmation page, which is displayed after the user has completed an order.
 
-function confirmation() {
+
+function Confirmation(props) {
+  const [customer, setCustomer] = useState(currentLoggedInCustomer());
+  const { order } = useLocation();
+
   return (
     <CssBaseline>
       <Paper elevation={3} sx={{ maxWidth: 750, marginX: 'auto', marginY: 15}}>
       <Grid container spacing={10}>
         <Grid item xs={12}>
           <Typography variant="h3" align="center" color="secondary" fontWeight="bold">
-            Thank you for your order!
+            {"Thank you for your order" + customer.firstName + "!"}
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h4" align="center">
-            Your order number is:         
+            Your order number is:        
             </Typography>
         </Grid>
 
         {/* @OrderNumber */}
         <Grid item xs={12}>
           <Typography variant="h4" align="center" fontWeight="bold" color="secondary">
-            #123456789
+            {order.orderId} placed {order.orderDate}
           </Typography>
         </Grid>
 
@@ -42,4 +49,4 @@ function confirmation() {
   )
 }
 
-export default confirmation;
+export default Confirmation;
