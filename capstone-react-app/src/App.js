@@ -15,6 +15,8 @@ import Confirmation from './Components/Confirmation/Confirmation';
 import ItemNotFound from './pages/ItemNotFound.jsx';
 import Footer from './layout/Footer.jsx';
 import React from 'react';
+import { ToastContainer, Toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 // This constant is used to create our theme for the website.
 // It is used in the ThemeProvider component.
@@ -39,13 +41,14 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+      <ToastContainer />
 
         {/* Calling the MainNavigation components here makes sure they are always on top of the page. */}
       {MainNavigation()}
       {genderbar()}
       
       <Routes>
-        <Route path='/' element={<HomePage/>}/>
+        <Route path='/' element={<HomePage />}/>
         <Route path='/Men' element={<Men/>}/>
         <Route path='/Women' element={<Women/>}/>
         <Route path='/test' element={<Test/>}/>

@@ -20,7 +20,7 @@ export function setLoggedInCustomer(customer) {
 }
 
 export function customerIsLoggedIn() {;
-   return !localStorage.getItem("user") === null;
+   return !(localStorage.getItem("user") === null);
 }
 
 export function currentLoggedInCustomer() {
