@@ -26,7 +26,7 @@ export default function Login() {
     validationSchema,
     onSubmit: async (values) => {
       if (LoginSubmit(values.username, values.password)) {
-        navigate(-1);
+        navigate("/");
       }
 
     }});
