@@ -4,23 +4,15 @@ import { API_URL_BASE } from '../../Components/APIUrlBase'
 
 const ORDERS_API = API_URL_BASE + "/orders"
 
-export function submitOrder(cartOrder) {
+export async function submitOrder(cartOrder) {
     let orderToSend = prepareOrder(cartOrder);
-    let result = sendOrder(orderToSend);
+    let result = await sendOrder(orderToSend);
 
     if (result === 0) {
-
+        console.log("error");
     } else {
         return result;
     }
-}
-
-function removeCartIdBeforeOrder(items) {
-    let itemsForOrder = [...items]
-    itemsForOrder.map(item => {
-        return delete item.cartId;
-    });
-    return itemsForOrder;
 }
 
 function prepareOrder() {
@@ -29,10 +21,10 @@ function prepareOrder() {
     removeCartIdBeforeOrder(cart);
     
     let order = {
-        customerId: currentCustomer[0].id,
+        customerID: currentCustomer[0].id,
         productsToAdd: [...cart]
     }
-
+    console.log(order);
     return order;
 }
 
@@ -46,10 +38,18 @@ async function sendOrder(order) {
     const response = await connection.json();
     if (response.orderId !== null) {
         cartSetUp();
+        console.log(response);
         return response;
     } else {
         console.log("Error.");
         return 0;
     }
+}
 
+function removeCartIdBeforeOrder(items) {
+    let itemsForOrder = [...items]
+    itemsForOrder.map(item => {
+        return delete item.cartId;
+    });
+    return itemsForOrder;
 }
