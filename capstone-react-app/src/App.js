@@ -48,16 +48,16 @@ function App() {
       {genderbar()}
       
       <Routes>
-        <Route path='/' element={<HomePage />}/>
-        <Route path='/Men' element={<Men/>}/>
-        <Route path='/Women' element={<Women/>}/>
-        <Route path='/test' element={<Test/>}/>
-        <Route path='/register' element={<Register/>}/>
-        <Route path='/Login' element={<Login/>}/>
-        <Route path='/Item/:itemParameterizedName' element={<Item/>}/>
-        <Route path='/Cart' element={<Cart/>}/>
-        <Route path='/Confirmation' element={<Confirmation/>}/>
-        <Route path='/ItemNotFound' element={<ItemNotFound/>}/>
+        <Route path='/Group2SpringProject-FrontEnd/' element={<HomePage />}/>
+        <Route path='/Group2SpringProject-FrontEnd/Men' element={<Men/>}/>
+        <Route path='/Group2SpringProject-FrontEnd/Women' element={<Women/>}/>
+        <Route path='/Group2SpringProject-FrontEnd/test' element={<Test/>}/>
+        <Route path='/Group2SpringProject-FrontEnd/register' element={<Register/>}/>
+        <Route path='/Group2SpringProject-FrontEnd/Login' element={<Login/>}/>
+        <Route path='/Group2SpringProject-FrontEnd/Item/:itemParameterizedName' element={<Item/>}/>
+        <Route path='/Group2SpringProject-FrontEnd/Cart' element={<Cart/>}/>
+        <Route path='/Group2SpringProject-FrontEnd/Confirmation' element={<Confirmation/>}/>
+        <Route path='/Group2SpringProject-FrontEnd/ItemNotFound' element={<ItemNotFound/>}/>
       </Routes>
       {Footer()}
       </ThemeProvider>

@@ -26,7 +26,7 @@ export default function Login() {
     validationSchema,
     onSubmit: async (values) => {
       if (LoginSubmit(values.username, values.password)) {
-        navigate("/");
+        navigate("/Group2SpringProject-FrontEnd");
       }
 
     }});
@@ -75,7 +75,7 @@ export default function Login() {
             <Grid container item xs={12} justifyContent="center">
               <Button color="primary" variant="contained"
                 onClick={() => {
-                  handleNavClick("/register");
+                  handleNavClick("/Group2SpringProject-FrontEnd/register");
                 }}
               >
               Register

@@ -99,7 +99,7 @@ function CartPage() {
                 let submittedOrder = await submitOrder();
                 if (submittedOrder === 0) {
                 } else {
-                  navigate("/confirmation", { state: { submittedOrder }});
+                  navigate("/Group2SpringProject-FrontEnd/confirmation", { state: { submittedOrder }});
                 }
               }}
             >

@@ -10,14 +10,14 @@ function genderbar() {
         <Container disableGutters maxWidth="false" >
             <Grid container spacing={2} alignItems="center" justifyItems="center" justifyContent="center" sx={{ bgcolor: '#DCEEF2', height: '60px' }}>
                 <Grid item>
-                    <Link to="/Men">
+                    <Link to="/Group2SpringProject-FrontEnd/Men">
                         <Button variant='outlined' color='secondary'>
                             Men
                         </Button>
                     </Link>    
                 </Grid>
                 <Grid item>
-                    <Link to="/Women">
+                    <Link to="/Group2SpringProject-FrontEnd/Women">
                         <Button variant='outlined' color='secondary'>
                             Women
                         </Button>

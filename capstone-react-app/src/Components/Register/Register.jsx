@@ -12,6 +12,7 @@ import * as Yup from "yup";
 import React from "react";
 import { addCustomer } from "./RegisterService";
 import { stateAbbrev } from "./stateabbreviation";
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   username: Yup.string().required("A Username is required"),
@@ -44,11 +45,13 @@ const initialValues = {
 };
 
 export default function Register() {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues,
     validationSchema: validationSchema,
     onSubmit: (values) => {
       addCustomer(values);
+      navigate('/Group2SpringProject-FrontEnd/')
     }
   });
 

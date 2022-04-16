@@ -33,7 +33,7 @@ function MainNavigation() {
   const handleLogoutClick = () => {
     LogoutCustomer();
     sendToast("Logged Out!");
-    navigate("/")
+    navigate("/Group2SpringProject-FrontEnd/")
   }
 
   if (customerIsLoggedIn()) {
@@ -51,7 +51,7 @@ function MainNavigation() {
                   color="secondary"
                   size="large"
                   onClick={() => {
-                    handleNavClick("/");
+                    handleNavClick("/Group2SpringProject-FrontEnd");
                   }}
                 >
                   <Typography
@@ -82,7 +82,7 @@ function MainNavigation() {
                   aria-label="ShoppingCartIcon"
                   color="secondary"
                   onClick={() => {
-                    handleNavClick("/cart");
+                    handleNavClick("/Group2SpringProject-FrontEnd/cart");
                   }}
                 >
                   <ShoppingCartRounded />
@@ -108,7 +108,7 @@ function MainNavigation() {
                   color="secondary"
                   size="large"
                   onClick={() => {
-                    handleNavClick("/");
+                    handleNavClick("/Group2SpringProject-FrontEnd/");
                   }}
                 >
                   <Typography
@@ -139,7 +139,7 @@ function MainNavigation() {
                   aria-label="ShoppingCartIcon"
                   color="secondary"
                   onClick={() => {
-                    handleNavClick("/cart");
+                    handleNavClick("/Group2SpringProject-FrontEnd/cart");
                   }}
                 >
                   <ShoppingCartRounded />
