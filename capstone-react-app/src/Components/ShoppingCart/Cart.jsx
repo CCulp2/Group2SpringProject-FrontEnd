@@ -13,6 +13,7 @@ import {
   removeFromShoppingCart,
 } from "./CartService";
 import CartItem from "./CartItem";
+import { submitOrder } from "../Confirmation/OrderAndConfirmationService";
 
 // This is the shopping cart page
 // This function maps the items in the cart to the cart page
@@ -21,26 +22,21 @@ function CartPage() {
   const navigate = useNavigate();
   const [currentCart, setCurrentCart] = React.useState(getShoppingCartItems());
 
-  const handleNavClick = (destination) => {
-    navigate(destination);
-  };
-
   const handleRemove = (cartIdToDelete) => {
     const newCart = [...currentCart];
-    newCart.filter((item) => item.cartId !== cartIdToDelete)
-    removeFromShoppingCart(cartIdToDelete)
+    newCart.filter((item) => item.cartId !== cartIdToDelete);
+    removeFromShoppingCart(cartIdToDelete);
     setCurrentCart(getShoppingCartItems());
     // setCartTotals(getShoppingCartItems());
   };
 
-  const [cartTotals, setCartTotals] = React.useState(setTotals(getShoppingCartItems()));
+  const [cartTotals, setCartTotals] = React.useState(
+    setTotals(getShoppingCartItems())
+  );
 
   React.useEffect(() => {
     setCartTotals(setTotals(getShoppingCartItems()));
-  },[currentCart])
-
-
-
+  }, [currentCart]);
 
   if (currentCart === undefined) {
     return <p>Cart is empty.</p>;
@@ -97,8 +93,14 @@ function CartPage() {
               color="secondary"
               size="large"
               style={{ width: 220, height: 50 }}
-              onClick={() => {
-                handleNavClick("/Confirmation");
+              onClick={async () => {
+                // handleNavClick("/Confirmation");
+
+                let submittedOrder = await submitOrder();
+                if (submittedOrder === 0) {
+                } else {
+                  navigate("/confirmation", { state: { submittedOrder }});
+                }
               }}
             >
               Confirm Purchase

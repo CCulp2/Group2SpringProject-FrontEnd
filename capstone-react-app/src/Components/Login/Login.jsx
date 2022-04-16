@@ -25,8 +25,10 @@ export default function Login() {
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      LoginSubmit(values.username, values.password);
-      console.log(values);
+      if (LoginSubmit(values.username, values.password)) {
+        navigate(-1);
+      }
+
     }});
 
   return (

@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import { AccountCircle, ShoppingCartRounded } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { currentLoggedInCustomer, customerIsLoggedIn } from "../Components/Customer/CustomerService";
+import { useState } from 'react';
 
 // This page renders the main navigation bar shown on every page
 
@@ -18,6 +20,12 @@ function MainNavigation() {
   const handleNavClick = (destination) => {
     navigate(destination);
   };
+
+  const [customer, setCustomer] = useState(0);
+
+  if (customerIsLoggedIn()) {
+    setCustomer(currentLoggedInCustomer);
+  }
 
   return (
     <>
@@ -51,6 +59,7 @@ function MainNavigation() {
 
               {/* This box is dedicated to the shopping cart icon/user icon */}
             <Box sx={{ ml: "auto" }}>
+              
               <IconButton
                 aria-label="Profile"
                 color="secondary"
