@@ -11,7 +11,7 @@ import Register from './Components/Register/Register.jsx';
 import Login from './Components/Login/Login.jsx';
 import Item from './pages/Item.jsx';
 import Cart from './Components/ShoppingCart/Cart'
-import Confirmation from './pages/Confirmation.jsx';
+import Confirmation from './Components/Confirmation/Confirmation';
 import ItemNotFound from './pages/ItemNotFound.jsx';
 import Footer from './layout/Footer.jsx';
 import React from 'react';

@@ -3,6 +3,8 @@ import { setLoggedInCustomer } from "../Customer/CustomerService";
 
 const LOGIN_BASE = API_URL_BASE + "/customer/login";
 const abort = new AbortController();
+let loginStatus;
+
 
 export async function LoginSubmit(username, password) {
     const login = await fetch(LOGIN_BASE, {
@@ -13,6 +15,11 @@ export async function LoginSubmit(username, password) {
     const result = await login.json();
     
     if (result.id !== null) {
-        setLoggedInCustomer(result.id);
+        setLoggedInCustomer(result);
+        loginStatus = true;
+        
+    } else {
+        loginStatus = false;
     }
+    return loginStatus;
 }
