@@ -8,6 +8,7 @@ import {
   Button,
   CardActionArea,
 } from "@mui/material";
+import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
 // This funcion is used to export the HomePage component.
@@ -22,7 +23,7 @@ function HomePage() {
           <Grid container spacing={1} direction="row" justifyContent="center">
             <Grid item>
                 <Card>
-                <CardActionArea onClick={navigate('/men')}>
+                <CardActionArea href={'/men'}>
                   <CardMedia
                     component="img"
                     height="500"
@@ -38,7 +39,7 @@ function HomePage() {
             </Grid>
             <Grid item>
               <Card>
-                <CardActionArea onClick={navigate('/women')}>
+                <CardActionArea href={'/women'}>
                 <CardMedia
                   component="img"
                   height="500"
